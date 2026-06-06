@@ -1,0 +1,39 @@
+# apps-portal
+
+GitHub Pages で公開するアプリポータル用の静的サイトです。
+
+- Portal URL: https://apps.yokoichi.jp/
+- Yorishiro URL: https://apps.yokoichi.jp/yorishiro/
+- Privacy Policy URL: https://apps.yokoichi.jp/yorishiro/privacy/
+- Terms URL: https://apps.yokoichi.jp/yorishiro/terms/
+- Support URL: https://apps.yokoichi.jp/yorishiro/support/
+
+## Structure
+
+```text
+.
+├── index.html
+├── CNAME
+├── .nojekyll
+├── assets/
+│   ├── app-icon.png
+│   └── styles.css
+├── yorishiro/
+│   ├── index.html
+│   ├── privacy/
+│   ├── terms/
+│   ├── support/
+│   └── legal-notice/
+├── privacy/
+├── terms/
+├── support/
+└── legal-notice/
+```
+
+The root legal paths (`/privacy/`, `/terms/`, `/support/`, `/legal-notice/`) are kept as lightweight redirects to the Yorishiro pages.
+
+## Deployment
+
+This repository is intended to be published directly with GitHub Pages from the repository root.
+
+DNS should point `apps.yokoichi.jp` to `yokoichi.github.io` with a CNAME record.
