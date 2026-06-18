@@ -37,3 +37,7 @@ The root legal paths (`/privacy/`, `/terms/`, `/support/`, `/legal-notice/`) are
 This repository is intended to be published directly with GitHub Pages from the repository root.
 
 DNS should point `apps.yokoichi.jp` to `yokoichi.github.io` with a CNAME record.
+
+## Handoff
+
+For detailed instructions on adding another product page, read `docs/SITE_HANDOFF_MANUAL.md`.
