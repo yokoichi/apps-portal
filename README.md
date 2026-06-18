@@ -4,6 +4,7 @@ GitHub Pages で公開するアプリポータル用の静的サイトです。
 
 - Portal URL: https://apps.yokoichi.jp/
 - Yorishiro URL: https://apps.yokoichi.jp/yorishiro/
+- Realtime Search Shortcut URL: https://apps.yokoichi.jp/realtime-search-shortcut/
 - Privacy Policy URL: https://apps.yokoichi.jp/yorishiro/privacy/
 - Terms URL: https://apps.yokoichi.jp/yorishiro/terms/
 - Support URL: https://apps.yokoichi.jp/yorishiro/support/
@@ -24,6 +25,9 @@ GitHub Pages で公開するアプリポータル用の静的サイトです。
 │   ├── terms/
 │   ├── support/
 │   └── legal-notice/
+├── realtime-search-shortcut/
+│   ├── index.html
+│   └── privacy/
 ├── privacy/
 ├── terms/
 ├── support/

@@ -3,42 +3,87 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>yokoichi Apps</title>
-    <meta name="description" content="yokoichi が公開するアプリの公式ポータルです。">
+    <title>yokoichi Products</title>
+    <meta name="description" content="横田裕市が公開するプロダクトの公式ポータルです。">
     <link rel="stylesheet" href="./assets/styles.css">
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="./">
         <img src="./assets/app-icon.png" alt="" width="42" height="42">
-        <span>yokoichi Apps</span>
+        <span>yokoichi Products</span>
       </a>
       <nav class="nav" aria-label="主要ページ">
-        <a href="./yorishiro/">yorishiro</a>
-        <a href="./yorishiro/privacy/">プライバシーポリシー</a>
-        <a href="./yorishiro/terms/">利用規約</a>
+        <a href="#apps">アプリ</a>
+        <a href="#extensions">Chrome拡張</a>
         <a href="./yorishiro/support/">サポート</a>
       </nav>
     </header>
 
     <main>
-      <section class="hero">
-        <div>
-          <h1>yokoichi Apps</h1>
+      <section class="portal-hero">
+        <div class="portal-hero__copy">
+          <p class="eyebrow">Public Product Shelf</p>
+          <h1>yokoichi Products</h1>
           <p>
-            yokoichi が公開するアプリの公式ポータルです。各アプリのサポート情報と法務ページをここにまとめます。
+            横田裕市が公開するプロダクトの公式ポータルです。各プロダクトのサポート情報と法務ページをここにまとめます。
           </p>
+          <div class="portal-hero__meta" aria-label="掲載カテゴリ">
+            <span>iOS App</span>
+            <span>Chrome Extension</span>
+            <span>Legal & Support</span>
+          </div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <img src="./assets/app-icon.png" alt="" width="260" height="260">
+        <div class="portal-hero__visual" aria-hidden="true">
+          <div class="product-token product-token--primary">
+            <img src="./assets/app-icon.png" alt="" width="120" height="120">
+          </div>
+          <div class="product-token product-token--secondary">
+            <img src="./assets/realtime-search-shortcut-icon.png" alt="" width="72" height="72">
+          </div>
         </div>
       </section>
 
-      <section class="link-grid" aria-label="公開アプリ">
-        <a class="link-card" href="./yorishiro/">
-          <strong>yorishiro</strong>
-          <span>AIと振り返る、自己理解の記録。Yorishiro の公開ページです。</span>
-        </a>
+      <section class="product-section product-section--featured" id="apps" aria-labelledby="apps-title">
+        <div class="section-heading">
+          <p class="eyebrow">Apps</p>
+          <h2 id="apps-title">メインプロダクト</h2>
+          <p>日々の記録や思考を扱うアプリを中心に、公開ページとサポート情報をまとめています。</p>
+        </div>
+
+        <div class="product-grid product-grid--featured">
+          <a class="product-card product-card--app" href="./yorishiro/">
+            <span class="product-card__icon">
+              <img src="./assets/app-icon.png" alt="" width="72" height="72">
+            </span>
+            <span class="product-card__body">
+              <span class="product-card__label">iOS App</span>
+              <strong>yorishiro</strong>
+              <span>AIと振り返る、自己理解の記録。Yorishiro の公開ページです。</span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <section class="product-section" id="extensions" aria-labelledby="extensions-title">
+        <div class="section-heading">
+          <p class="eyebrow">Extensions</p>
+          <h2 id="extensions-title">Chrome拡張</h2>
+          <p>ブラウザ上の小さな操作を軽くする、単一目的の拡張機能です。</p>
+        </div>
+
+        <div class="product-grid">
+          <a class="product-card" href="./realtime-search-shortcut/">
+            <span class="product-card__icon">
+              <img src="./assets/realtime-search-shortcut-icon.png" alt="" width="72" height="72">
+            </span>
+            <span class="product-card__body">
+              <span class="product-card__label">Chrome Extension</span>
+              <strong>選択テキストをYahoo!リアルタイム検索で開く（非公式）</strong>
+              <span>選択したテキストをYahoo!リアルタイム検索で開くChrome拡張の公開ページです。</span>
+            </span>
+          </a>
+        </div>
       </section>
     </main>
 
