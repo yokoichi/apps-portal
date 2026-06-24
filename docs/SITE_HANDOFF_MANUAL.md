@@ -1,6 +1,6 @@
 # apps-portal Handoff Manual
 
-This document is the handoff guide for adding new app/product pages to the public apps portal.
+This document is the handoff guide for adding and maintaining product pages on the public apps portal.
 
 Use this when another project thread, such as a Chrome extension project, needs to update `https://apps.yokoichi.jp/`.
 
@@ -29,6 +29,8 @@ It currently hosts:
 - Yorishiro terms: `/yorishiro/terms/`
 - Yorishiro support: `/yorishiro/support/`
 - Yorishiro legal notice: `/yorishiro/legal-notice/`
+- Realtime Search Shortcut Chrome extension page: `/realtime-search-shortcut/`
+- Realtime Search Shortcut privacy policy: `/realtime-search-shortcut/privacy/`
 
 The original iOS app repository should stay private. Public website content belongs in this `apps-portal` repository.
 
@@ -42,6 +44,7 @@ The original iOS app repository should stay private. Public website content belo
 ├── README.md
 ├── assets/
 │   ├── app-icon.png
+│   ├── realtime-search-shortcut-icon.png
 │   └── styles.css
 ├── docs/
 │   └── SITE_HANDOFF_MANUAL.md
@@ -54,6 +57,10 @@ The original iOS app repository should stay private. Public website content belo
 │   ├── support/
 │   │   └── index.html
 │   └── legal-notice/
+│       └── index.html
+├── realtime-search-shortcut/
+│   ├── index.html
+│   └── privacy/
 │       └── index.html
 ├── privacy/
 │   └── index.html
@@ -97,8 +104,20 @@ Important reusable classes:
 - `.legal-page`: long-form legal text styling
 - `.contact-card`: framed support/contact details
 - `.site-footer`: shared footer
+- `.portal-hero`: large top section for the product portal index
+- `.portal-hero__copy`: copy column in the portal hero
+- `.portal-hero__meta`: category pills in the portal hero
+- `.portal-hero__visual`: visual panel in the portal hero
+- `.product-token`: floating product icon inside the portal hero
+- `.product-section`: product list section on the portal top
+- `.section-heading`: section title block
+- `.product-grid`: responsive product card grid
+- `.product-card`: richer product card used on the portal top
+- `.product-card__icon`: icon well in a product card
+- `.product-card__body`: text column in a product card
+- `.product-card__label`: small product category label
 
-Cards are simple `a.link-card` blocks. Keep them concise and scannable.
+Use `.product-card` on the portal top. Use `.link-card` inside product detail pages for related links such as App Store, Chrome Web Store, privacy, support, and legal pages.
 
 ## Current Page Patterns
 
@@ -108,29 +127,52 @@ File: `index.html`
 
 Purpose:
 
-- Introduces `yokoichi Apps`
-- Lists public app/product pages
+- Introduces `yokoichi Products`
+- Lists product categories
+- Shows featured iOS apps and Chrome extensions
 
-Current app card example:
+Current Yorishiro product card example:
 
 ```html
-<a class="link-card" href="./yorishiro/">
-  <strong>yorishiro</strong>
-  <span>AIと振り返る、自己理解の記録。Yorishiro の公開ページです。</span>
+<a class="product-card product-card--app" href="./yorishiro/">
+  <span class="product-card__icon">
+    <img src="./assets/app-icon.png" alt="" width="72" height="72">
+  </span>
+  <span class="product-card__body">
+    <span class="product-card__label">iOS App</span>
+    <strong>yorishiro</strong>
+    <span>AIと振り返る、自己理解の記録。Yorishiro の公開ページです。</span>
+  </span>
 </a>
 ```
 
-When adding a Chrome extension, add one more `a.link-card` inside the `section.link-grid`.
+Current Chrome extension product card example:
+
+```html
+<a class="product-card" href="./realtime-search-shortcut/">
+  <span class="product-card__icon">
+    <img src="./assets/realtime-search-shortcut-icon.png" alt="" width="72" height="72">
+  </span>
+  <span class="product-card__body">
+    <span class="product-card__label">Chrome Extension</span>
+    <strong>選択テキストをYahoo!リアルタイム検索で開く（非公式）</strong>
+    <span>選択したテキストをYahoo!リアルタイム検索で開くChrome拡張の公開ページです。</span>
+  </span>
+</a>
+```
+
+When adding another Chrome extension, add a new `a.product-card` inside the `section#extensions .product-grid`.
 
 ### App/Product Top Page
 
 Example: `yorishiro/index.html`
+Example: `realtime-search-shortcut/index.html`
 
 Purpose:
 
 - Product name and value proposition
 - Short explanation
-- Links to support/legal pages
+- Links to store/support/legal/privacy pages
 
 The app page should use:
 
@@ -140,6 +182,27 @@ The app page should use:
 - Optional `section.content-section`
 - `section.link-grid` for support/legal/store links
 - Footer
+
+### Chrome Extension Page Pattern
+
+Example: `realtime-search-shortcut/index.html`
+
+Current pattern:
+
+- Product page has `section.hero`
+- Chrome extension category label is written as `.eyebrow`
+- Store link is a `link-card` with `target="_blank"` and `rel="noopener"`
+- Privacy link is a local `link-card`
+- Non-official tools should state clearly that they are unofficial
+
+Current Chrome Web Store card pattern:
+
+```html
+<a class="link-card" href="https://chromewebstore.google.com/detail/..." target="_blank" rel="noopener">
+  <strong>Chrome Web Store</strong>
+  <span>公開中の拡張機能ページをChrome Web Storeで開きます。</span>
+</a>
+```
 
 ### Support Page
 
@@ -152,7 +215,7 @@ Current support contact is a Google Form:
 <p><a href="https://forms.gle/pXicWf8RznUk7daB9">https://forms.gle/pXicWf8RznUk7daB9</a></p>
 ```
 
-For a Chrome extension, create a separate support page under its product folder if support details differ.
+For a Chrome extension, create a separate support page under its product folder if support details differ. The current Realtime Search Shortcut page only has a privacy page and Chrome Web Store link; add a support page only when needed.
 
 ## Adding a Chrome Extension Page
 
@@ -185,12 +248,18 @@ Add `legal-notice/` only if there is paid functionality or a specific legal/comm
 
 ### Update Portal Top
 
-Edit `index.html` and add a card inside the existing `section.link-grid`:
+Edit `index.html` and add a card inside the existing `section#extensions .product-grid`:
 
 ```html
-<a class="link-card" href="./example-extension/">
-  <strong>Extension Name</strong>
-  <span>Chrome拡張の短い説明を1文で入れます。</span>
+<a class="product-card" href="./example-extension/">
+  <span class="product-card__icon">
+    <img src="./assets/example-extension-icon.png" alt="" width="72" height="72">
+  </span>
+  <span class="product-card__body">
+    <span class="product-card__label">Chrome Extension</span>
+    <strong>Extension Name</strong>
+    <span>Chrome拡張の短い説明を1文で入れます。</span>
+  </span>
 </a>
 ```
 
@@ -243,6 +312,10 @@ Create `example-extension/index.html`:
       </section>
 
       <section class="link-grid" aria-label="関連ページ">
+        <a class="link-card" href="https://chromewebstore.google.com/detail/..." target="_blank" rel="noopener">
+          <strong>Chrome Web Store</strong>
+          <span>公開中の拡張機能ページをChrome Web Storeで開きます。</span>
+        </a>
         <a class="link-card" href="./privacy/">
           <strong>プライバシーポリシー</strong>
           <span>Chrome Web Store掲載用のプライバシーポリシーです。</span>
@@ -381,6 +454,7 @@ Create `example-extension/support/index.html`:
 Current shared icon:
 
 - `assets/app-icon.png`
+- `assets/realtime-search-shortcut-icon.png`
 
 If the Chrome extension has its own icon, add it under `assets/`.
 
