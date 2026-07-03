@@ -453,6 +453,12 @@ main {
   margin: 0 0 14px;
 }
 
+.legal-page .legal-note {
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
 .legal-page ol,
 .legal-page ul {
   margin: 0 0 16px;
