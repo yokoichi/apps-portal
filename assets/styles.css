@@ -456,7 +456,8 @@ main {
 .legal-page .legal-note {
   margin-top: 24px;
   color: var(--muted);
-  font-size: 0.94rem;
+  font-size: 0.88rem;
+  line-height: 1.7;
 }
 
 .legal-page ol,
