@@ -79,7 +79,7 @@ main,
 .hero-visual img { border-radius: 26px; box-shadow: 0 8px 28px rgba(32, 36, 42, 0.05); }
 .eyebrow { margin: 0 0 12px; color: var(--accent-strong); font-size: .94rem; font-weight: 700; }
 .hero h1 { margin: 0; font-size: clamp(2.2rem, 5vw, 4.4rem); line-height: 1.08; }
-.hero p { margin: 18px 0 0; max-width: 680px; color: var(--muted); font-size: 1.08rem; }
+.hero p, .lead { margin: 18px 0 0; max-width: 680px; color: var(--muted); font-size: 1.08rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
 .status-link { color: var(--accent); font-weight: 600; }
 
@@ -101,8 +101,10 @@ main,
 .legal-page h1 { line-height: 1.08; }
 .legal-page h2 { margin: 34px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-size: 1.28rem; }
 .legal-page p { margin: 0 0 14px; }
-.legal-page ul { margin: 0 0 16px; padding-left: 1.5em; }
+.legal-page ol, .legal-page ul { margin: 0 0 16px; padding-left: 1.5em; }
 .legal-page li { margin: 0 0 8px; }
+.notice { margin: 18px 0; padding: 18px 20px; background: #eef2f6; border-left: 4px solid var(--accent); border-radius: 8px; }
+.notice__title { color: var(--accent-strong); font-weight: 700; }
 .page-meta { margin: 14px 0 32px; color: var(--muted); font-size: .95rem; }
 .site-footer {
   display: flex;
