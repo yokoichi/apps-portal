@@ -23,21 +23,22 @@
 
   <main class="page legal-page">
     <h1>プライバシーポリシー</h1>
-    <p>制定日: 2026-07-10</p>
+    <p class="page-meta">制定日: 2026年7月10日／最終改定日: 2026年8月9日</p>
     <p>TozanKinen（以下「本アプリ」）は、登山写真に山名・標高・撮影日を文字入れするためのiOSアプリです。本ポリシーは、本アプリが利用者の情報をどのように取り扱うかを説明するものです。</p>
 
     <section aria-labelledby="collection-title">
       <h2 id="collection-title">収集する情報</h2>
-      <p>本アプリは、開発者・第三者のサーバーへ利用者の情報を送信・収集することは一切ありません。</p>
+      <p>本アプリが、利用者の情報を開発者・第三者のサーバーへ自動的に送信・収集することは一切ありません。なお、App内課金の購入・復元の際には、AppleのApp Store（StoreKit）との通信が発生しますが、決済はAppleが管理するものであり、開発者が利用者の個人情報を取得することはありません。</p>
     </section>
 
     <section aria-labelledby="photos-location-title">
       <h2 id="photos-location-title">写真・位置情報の取り扱い</h2>
       <ul>
         <li>本アプリは、利用者が選択した写真の画像データとEXIFメタデータ（GPS座標・撮影日時）を、山名のサジェストおよびキャプション（山名・標高・撮影日）の合成に使用します。</li>
-        <li>これらの処理はすべて端末内で完結し、外部（開発者を含む）へ送信されることはありません。</li>
+        <li>写真の加工、山の判定（山名のサジェスト・山別アルバムの分類）、EXIFの読み取りは、すべて端末内で行われます。これらの処理で利用者の情報が外部（開発者を含む）へ自動的に送信されることはありません。</li>
         <li>位置情報の取得は、写真に既に記録されているGPS情報を読み取る方法のみで行われます。本アプリは端末の現在位置（CoreLocation等）へはアクセスしません。</li>
         <li>書き出した写真をフォトライブラリへ保存する場合は、利用者が選択したアルバムへの追加のみを行います（既存の写真の削除・上書きは行いません）。</li>
+        <li>書き出したJPEG画像には、元写真のGPS座標・撮影日時などのEXIF情報がそのまま保持されます。</li>
       </ul>
     </section>
 
@@ -51,24 +52,45 @@
       </ul>
     </section>
 
+    <section aria-labelledby="share-title">
+      <h2 id="share-title">書き出した写真の共有（利用者の操作による送信）</h2>
+      <ul>
+        <li>写真の保存後、利用者の操作によりiOSの共有シート（システム標準の共有機能）が表示されます。</li>
+        <li>利用者が共有先を選択した場合、書き出したJPEG画像が選択先のサービス・アプリへ送信されます。書き出したJPEG画像には、元写真のGPS座標・撮影日時などのEXIF情報が保持されています。</li>
+        <li>この送信は利用者自身の操作によってのみ行われるものであり、本アプリや開発者が自動的に送信・収集するものではありません。</li>
+        <li>共有後の写真の取り扱いには、利用者が選択した共有先サービスの利用規約・プライバシーポリシーが適用されます。</li>
+      </ul>
+    </section>
+
     <section aria-labelledby="third-party-title">
       <h2 id="third-party-title">第三者への提供</h2>
-      <p>本アプリは、利用者の情報を第三者と共有・提供することはありません。</p>
+      <p>本アプリが、利用者の情報を第三者へ自動的に共有・提供することはありません。ただし、利用者自身の操作により、書き出した写真を共有シートから共有した場合はこの限りではありません（<a href="#share-title">書き出した写真の共有</a>をご覧ください）。</p>
     </section>
 
     <section aria-labelledby="analytics-title">
       <h2 id="analytics-title">解析・広告</h2>
-      <p>本アプリは、アクセス解析SDK・広告SDK・クラッシュレポートなど、外部へ通信を行うライブラリを一切組み込んでいません。</p>
+      <p>本アプリは、アクセス解析SDK・広告SDK・クラッシュレポートなど、外部へ通信を行うライブラリを一切組み込んでいません。本アプリが自動的に行う外部との通信は、App内課金に伴うApp Store（StoreKit）との通信のみです。このほかに、利用者の操作による共有シートからの送信（<a href="#share-title">書き出した写真の共有</a>）があります。</p>
     </section>
 
     <section aria-labelledby="database-title">
       <h2 id="database-title">内蔵データベース</h2>
-      <p>本アプリには、OpenStreetMapおよび国土地理院のデータを統合した山名データベース（山名・標高・座標）を内蔵しています。このデータベースは静的なファイルであり、利用者の情報とは無関係です。データの出典はOpenStreetMapおよび国土地理院です。OpenStreetMapのデータはOpen Database License（ODbL）に基づき利用しています。</p>
+      <p>本アプリには、OpenStreetMapおよび国土地理院のデータを統合した山名データベース（山名・標高・座標）を内蔵しています。このデータベースは静的なファイルであり、利用者の情報とは無関係です。データの出典はOpenStreetMap（© OpenStreetMap contributors, Open Database License）および国土地理院です。</p>
     </section>
 
     <section aria-labelledby="changes-title">
       <h2 id="changes-title">本ポリシーの変更</h2>
       <p>本アプリの機能追加・変更に伴い、本ポリシーの内容を変更する場合があります。重要な変更がある場合は、本ドキュメントの更新をもって周知します。</p>
+    </section>
+
+    <section aria-labelledby="contact-title">
+      <h2 id="contact-title">お問い合わせ</h2>
+      <p>本ポリシーに関するご質問は、以下の問い合わせフォームからお願いします。</p>
+      <div class="contact-card">
+        <strong>お問い合わせ</strong>
+        <p>運営者: 横田裕市</p>
+        <p><a href="https://forms.gle/JaZH6ZLDTNDwwUB9A" target="_blank" rel="noopener">問い合わせフォームを開く（新しいタブで開きます）</a></p>
+        <p><a href="../support/">サポートページ</a>もご覧ください。</p>
+      </div>
     </section>
   </main>
 
