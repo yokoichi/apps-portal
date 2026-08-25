@@ -79,6 +79,29 @@ a {
   color: var(--accent-strong);
 }
 
+.nav .locale-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  min-height: 30px;
+  padding: 2px 11px;
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.nav .locale-switch:hover {
+  color: var(--accent-strong);
+  background: rgba(47, 125, 104, 0.08);
+  border-color: rgba(47, 125, 104, 0.42);
+}
+
 main {
   width: min(1080px, calc(100% - 40px));
   margin: 0 auto;
