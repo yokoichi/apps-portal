@@ -181,6 +181,23 @@ class YorishiroLocalizationTests(unittest.TestCase):
                 visible_copy = " ".join(parser.visible_text)
                 self.assertIsNone(japanese_characters.search(visible_copy))
 
+    def test_support_pages_use_locale_specific_contact_forms(self) -> None:
+        expected_urls = {
+            "ja": "https://forms.gle/pXicWf8RznUk7daB9",
+            "en": "https://forms.gle/gMsU8oPncFH6pjGZ6",
+        }
+        support_page = PAGES["support"]
+
+        for locale, expected_url in expected_urls.items():
+            with self.subTest(locale=locale):
+                parser = parse_document(support_page[f"{locale}_file"])
+                form_urls = [
+                    anchor.get("href")
+                    for anchor in parser.anchors
+                    if urlparse(anchor.get("href", "")).netloc == "forms.gle"
+                ]
+                self.assertEqual(form_urls, [expected_url])
+
 
 if __name__ == "__main__":
     unittest.main()
