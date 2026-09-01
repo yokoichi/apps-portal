@@ -104,6 +104,17 @@ def canonical_url(parser: DocumentParser) -> str | None:
 
 
 class YorishiroLocalizationTests(unittest.TestCase):
+    def test_home_pages_offer_a_link_to_the_web_edition(self) -> None:
+        expected_web_edition_url = "https://yorishiro.me/"
+
+        for locale in ("ja", "en"):
+            with self.subTest(locale=locale):
+                parser = parse_document(PAGES["home"][f"{locale}_file"])
+                self.assertIn(
+                    expected_web_edition_url,
+                    [anchor.get("href") for anchor in parser.anchors],
+                )
+
     def test_every_japanese_page_has_an_english_counterpart(self) -> None:
         for page_name, page in PAGES.items():
             with self.subTest(page=page_name):
