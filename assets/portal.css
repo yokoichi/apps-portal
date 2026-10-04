@@ -29,6 +29,9 @@ body.portal-marketing {
 .portal-marketing .portal-nav { display: flex; align-items: center; gap: 8px 24px; flex-wrap: wrap; }
 .portal-marketing .portal-nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--portal-muted); text-decoration: none; }
 .portal-marketing .portal-nav a:hover { color: var(--portal-link); text-decoration: underline; }
+.portal-marketing .portal-locale { display: flex; align-items: center; gap: 8px; }
+.portal-marketing .portal-locale a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding-inline: 8px; font-size: 14px; text-decoration: none; }
+.portal-marketing .portal-locale a[aria-current="page"] { color: var(--portal-ink); font-weight: 600; text-decoration: underline; }
 .portal-marketing .portal-skip { position: absolute; left: 20px; top: 8px; padding: 10px 16px; background: #fff; transform: translateY(-200%); z-index: 1; }
 .portal-marketing .portal-skip:focus { transform: none; }
 .portal-marketing .portal-intro { padding-block: 48px 32px; }

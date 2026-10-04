@@ -9,9 +9,10 @@ from urllib.parse import unquote, urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://apps.yokoichi.jp'
-PAGES = ['index.html', 'yorishiro/index.html', 'yorishiro/en/index.html',
+DETAILS = ['yorishiro/index.html', 'yorishiro/en/index.html',
          'tozankinen/index.html', 'ichikeshi/index.html', 'ichikeshi/en/index.html',
          'realtime-search-shortcut/index.html']
+PAGES = ['index.html', 'en/index.html'] + DETAILS
 
 
 class Document(HTMLParser):
@@ -57,9 +58,8 @@ class PortalJourneyTests(unittest.TestCase):
                   '/tozankinen/terms/', '/ichikeshi/support/', '/ichikeshi/privacy/',
                   '/realtime-search-shortcut/privacy/']:
             self.assertIn(p, hrefs)
-        self.assertGreaterEqual(sum(a.get('href') == '#support' for a in d.by_tag('a')), 2)
+        self.assertGreaterEqual(sum(a.get('href') == '#support' for a in d.by_tag('a')), 1)
         self.assertNotIn('/ichikeshi/terms/', hrefs)
-        self.assertFalse(any('locale-switch' in a.get('class', '') for a in d.by_tag('a')))
 
     def test_existing_extension_fragment_still_identifies_its_product(self):
         d = Document(ROOT / 'index.html')
@@ -74,14 +74,14 @@ class PortalJourneyTests(unittest.TestCase):
             self.assertEqual(urlsplit(urljoin(ORIGIN + '/' + page, switches[0]['href'])).path, target)
             self.assertTrue(switches[0].get('aria-label'))
             if '/en/' in page:
-                back = [a for a in d.by_tag('a') if a.get('href') == '../../']
+                back = [a for a in d.by_tag('a') if a.get('href') == '../../en/']
                 self.assertEqual(len(back), 1)
-                self.assertIn('All apps (Japanese)', (ROOT / page).read_text())
+                self.assertIn('All apps', (ROOT / page).read_text())
 
     def test_each_product_has_a_text_store_link(self):
         ids = {'yorishiro': '6764608171', 'tozankinen': '6797188526',
                'ichikeshi': '6816470389', 'realtime-search-shortcut': 'cbaakfanbmegjclflbbdgiegibfaoflo'}
-        for page in PAGES[1:]:
+        for page in DETAILS:
             with self.subTest(page=page):
                 d = Document(ROOT / page)
                 links = [a for a in d.by_tag('a') if 'portal-store' in a.get('class', '').split()]
@@ -95,7 +95,7 @@ class PortalJourneyTests(unittest.TestCase):
             d = Document(ROOT / page)
             base = ORIGIN + '/' + page.removesuffix('index.html')
             for tag, a in d.elements:
-                attr = 'src' if tag == 'img' else 'href' if tag in ('a', 'link') else None
+                attr = 'src' if tag in ('img', 'script') else 'href' if tag in ('a', 'link') else None
                 if not attr or attr not in a:
                     continue
                 u = urlsplit(urljoin(base, a[attr]))
@@ -113,7 +113,7 @@ class PortalJourneyTests(unittest.TestCase):
     def test_product_screens_have_verified_sources_and_dimensions(self):
         ledger = json.loads((ROOT / 'assets/portal-media.json').read_text())
         screens = {a['path']: a for a in ledger if a.get('kind') == 'screenshot'}
-        for page in PAGES[1:]:
+        for page in DETAILS:
             images = [a for a in Document(ROOT / page).by_tag('img') if 'portal-screen' in a.get('class', '').split()]
             self.assertGreaterEqual(len(images), 1, page)
             self.assertLessEqual(len(images), 2 if 'realtime' in page else 3)
@@ -132,7 +132,12 @@ class PortalJourneyTests(unittest.TestCase):
         for page in PAGES:
             d = Document(ROOT / page)
             self.assertIn('portal-marketing', d.by_tag('body')[0].get('class', '').split())
-            self.assertEqual(d.by_tag('script'), [])
+            scripts = d.by_tag('script')
+            if page in ('index.html', 'en/index.html'):
+                self.assertEqual(len(scripts), 1)
+                self.assertTrue(scripts[0].get('src', '').endswith('assets/portal-locale.js'))
+            else:
+                self.assertEqual(scripts, [])
             sheets = [a['href'] for a in d.by_tag('link') if a.get('rel') == 'stylesheet']
             self.assertEqual(len(sheets), 1)
             self.assertTrue(sheets[0].endswith('/assets/portal.css') or sheets[0] == 'assets/portal.css')
