@@ -1,119 +1,53 @@
 <!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>yokoichi Products</title>
-    <meta name="description" content="横田裕市が公開するプロダクトの公式ポータルです。">
-    <link rel="stylesheet" href="./assets/styles.css">
-  </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="./">
-        <img src="./assets/app-icon.png" alt="" width="42" height="42">
-        <span>yokoichi Products</span>
-      </a>
-      <nav class="nav" aria-label="主要ページ">
-        <a href="#apps">アプリ</a>
-        <a href="#extensions">Chrome拡張</a>
-        <a href="./yorishiro/support/">サポート</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="portal-hero">
-        <div class="portal-hero__copy">
-          <p class="eyebrow">Public Product Shelf</p>
-          <h1>yokoichi Products</h1>
-          <p>
-            横田裕市が公開するプロダクトの公式ポータルです。各プロダクトのサポート情報と法務ページをここにまとめます。
-          </p>
-          <div class="portal-hero__meta" aria-label="掲載カテゴリ">
-            <span>iOS App</span>
-            <span>Chrome Extension</span>
-            <span>Legal & Support</span>
-          </div>
-        </div>
-        <div class="portal-hero__visual" aria-hidden="true">
-          <div class="product-token product-token--primary">
-            <img src="./assets/app-icon.png" alt="" width="120" height="120">
-          </div>
-          <div class="product-token product-token--secondary">
-            <img src="./assets/realtime-search-shortcut-icon.png" alt="" width="72" height="72">
-          </div>
-        </div>
-      </section>
-
-      <section class="product-section product-section--featured" id="apps" aria-labelledby="apps-title">
-        <div class="section-heading">
-          <p class="eyebrow">Apps</p>
-          <h2 id="apps-title">メインプロダクト</h2>
-          <p>日々の記録や思考を扱うアプリを中心に、公開ページとサポート情報をまとめています。</p>
-        </div>
-
-        <div class="product-grid product-grid--featured">
-          <a class="product-card product-card--app" href="./yorishiro/">
-            <span class="product-card__icon">
-              <img src="./assets/app-icon.png" alt="" width="72" height="72">
-            </span>
-            <span class="product-card__body">
-              <span class="product-card__label">iOS App</span>
-              <strong>yorishiro</strong>
-              <span>AIと振り返る、自己理解の記録。Yorishiro の公開ページです。</span>
-            </span>
-          </a>
-          <a class="product-card product-card--app" href="./tozankinen/">
-            <span class="product-card__icon">
-              <img src="./assets/tozankinen-icon.png?v=2" alt="" width="72" height="72">
-            </span>
-            <span class="product-card__body">
-              <span class="product-card__label">iOS App</span>
-              <strong>登山記念</strong>
-              <span>登山写真に、山名・標高・撮影日を文字入れするアプリです。</span>
-            </span>
-          </a>
-          <a class="product-card product-card--app" href="./ichikeshi/">
-            <span class="product-card__icon">
-              <img src="./ichikeshi/assets/icon.png" alt="" width="72" height="72">
-            </span>
-            <span class="product-card__body">
-              <span class="product-card__label">iOS App</span>
-              <strong>位置消し</strong>
-              <span>写真のコピーから位置情報などを削除して、保存・共有できるアプリです。</span>
-            </span>
-          </a>
-        </div>
-      </section>
-
-      <section class="product-section" id="extensions" aria-labelledby="extensions-title">
-        <div class="section-heading">
-          <p class="eyebrow">Extensions</p>
-          <h2 id="extensions-title">Chrome拡張</h2>
-          <p>ブラウザ上の小さな操作を軽くする、単一目的の拡張機能です。</p>
-        </div>
-
-        <div class="product-grid">
-          <a class="product-card" href="./realtime-search-shortcut/">
-            <span class="product-card__icon">
-              <img src="./assets/realtime-search-shortcut-icon.png" alt="" width="72" height="72">
-            </span>
-            <span class="product-card__body">
-              <span class="product-card__label">Chrome Extension</span>
-              <strong>選択テキストをYahoo!リアルタイム検索で開く（非公式）</strong>
-              <span>選択したテキストをYahoo!リアルタイム検索で開くChrome拡張の公開ページです。</span>
-            </span>
-          </a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <span>&copy; 2026 yokoichi</span>
-      <div class="footer-links">
-        <a href="./yorishiro/privacy/">Privacy</a>
-        <a href="./yorishiro/terms/">Terms</a>
-        <a href="./yorishiro/support/">Support</a>
-      </div>
-    </footer>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apps / Tools — yokoichi</title>
+  <meta name="description" content="横田裕市がつくる、日々に使う小さな道具。Yorishiro、登山記念、位置消しとChrome拡張の公式紹介・サポート。">
+  <link rel="canonical" href="https://apps.yokoichi.jp/">
+  <link rel="stylesheet" href="assets/portal.css">
+</head>
+<body class="portal-marketing">
+  <a class="portal-skip" href="#main">本文へ</a>
+  <header class="portal-header portal-shell">
+    <a class="portal-brand" href="./">yokoichi / tools</a>
+    <nav class="portal-nav" aria-label="主要ページ"><a href="#apps">アプリ</a><a href="#support">サポート</a></nav>
+  </header>
+  <main class="portal-shell" id="main">
+    <section id="apps" aria-labelledby="page-title">
+      <div class="portal-intro"><h1 id="page-title" lang="en">Apps / Tools</h1><p>日々に使う、小さな道具。</p></div>
+      <ul class="portal-list">
+        <li><a class="portal-row" href="./yorishiro/" aria-label="Yorishiroの詳細を見る">
+          <img class="portal-icon" src="assets/portal-icons/yorishiro.png" alt="" width="96" height="96">
+          <span class="portal-copy"><strong class="portal-name">Yorishiro</strong><span class="portal-purpose">AIと振り返る、自己理解の記録。</span></span>
+          <span class="portal-platform">iPhone・Web</span><span class="portal-action" aria-hidden="true"><span class="portal-action-label">詳しく見る</span><span class="portal-action-arrow">→</span></span>
+        </a></li>
+        <li><a class="portal-row" href="./tozankinen/" aria-label="登山記念の詳細を見る">
+          <img class="portal-icon" src="assets/portal-icons/tozankinen.png" alt="" width="96" height="96">
+          <span class="portal-copy"><strong class="portal-name">登山記念</strong><span class="portal-purpose">登山写真に、山名・標高・撮影日を。</span></span>
+          <span class="portal-platform">iPhone</span><span class="portal-action" aria-hidden="true"><span class="portal-action-label">詳しく見る</span><span class="portal-action-arrow">→</span></span>
+        </a></li>
+        <li><a class="portal-row" href="./ichikeshi/" aria-label="位置消しの詳細を見る">
+          <img class="portal-icon" src="assets/portal-icons/ichikeshi.png" alt="" width="96" height="96">
+          <span class="portal-copy"><strong class="portal-name">位置消し</strong><span class="portal-purpose">写真のコピーから、位置情報を削除。</span></span>
+          <span class="portal-platform">iPhone</span><span class="portal-action" aria-hidden="true"><span class="portal-action-label">詳しく見る</span><span class="portal-action-arrow">→</span></span>
+        </a></li>
+        <li id="extensions"><a class="portal-row" href="./realtime-search-shortcut/" aria-label="リアルタイム検索の詳細を見る">
+          <img class="portal-icon portal-icon--extension" src="assets/portal-icons/realtime-search-shortcut.png" alt="" width="96" height="96">
+          <span class="portal-copy"><strong class="portal-name">リアルタイム検索</strong><span class="portal-purpose">選択テキストをYahoo!リアルタイム検索へ。</span></span>
+          <span class="portal-platform">Chrome拡張・非公式</span><span class="portal-action" aria-hidden="true"><span class="portal-action-label">詳しく見る</span><span class="portal-action-arrow">→</span></span>
+        </a></li>
+      </ul>
+    </section>
+    <section class="portal-support" id="support" aria-labelledby="support-title">
+      <h2 id="support-title">サポートと法務</h2><p class="portal-support-intro">使い方、お問い合わせ、情報の取り扱いについて。</p>
+      <div class="portal-support-row"><h3>Yorishiro</h3><div><div class="portal-links"><a href="./yorishiro/support/">サポート</a><a href="./yorishiro/privacy/">プライバシー</a><a href="./yorishiro/terms/">利用規約</a><a href="./yorishiro/legal-notice/">特商法表記</a></div></div></div>
+      <div class="portal-support-row"><h3>登山記念</h3><div><div class="portal-links"><a href="./tozankinen/support/">サポート</a><a href="./tozankinen/privacy/">プライバシー</a><a href="./tozankinen/terms/">利用規約</a></div></div></div>
+      <div class="portal-support-row"><h3>位置消し</h3><div><div class="portal-links"><a href="./ichikeshi/support/">サポート</a><a href="./ichikeshi/privacy/">プライバシー</a></div></div></div>
+      <div class="portal-support-row"><h3>リアルタイム検索</h3><div><div class="portal-links"><a href="./realtime-search-shortcut/privacy/">プライバシー</a></div><p class="portal-note">お問い合わせは、<a class="portal-secondary" href="https://chromewebstore.google.com/detail/cbaakfanbmegjclflbbdgiegibfaoflo">Chrome Web Store</a>のデベロッパー連絡先をご利用ください。</p></div></div>
+    </section>
+  </main>
+  <footer class="portal-footer portal-shell"><span>© 2026 yokoichi</span><a href="#support">サポート・法務</a></footer>
+</body>
 </html>

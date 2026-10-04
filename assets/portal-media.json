@@ -1,0 +1,128 @@
+[
+  {
+    "product": "yorishiro",
+    "path": "assets/portal-icons/yorishiro.png",
+    "source": "assets/app-icon.png",
+    "owner_verified": true,
+    "verification": "Original icon tracked in apps-portal; only a resized derivative.",
+    "width": 96,
+    "height": 96,
+    "kind": "icon",
+    "sha256": "4e4eb1d9ca1a148b64d4a84ea444f082c357d0add2d522c2c6a5d03b3e73cd99"
+  },
+  {
+    "product": "tozankinen",
+    "path": "assets/portal-icons/tozankinen.png",
+    "source": "assets/tozankinen-icon.png",
+    "owner_verified": true,
+    "verification": "Original icon tracked in apps-portal; only a resized derivative.",
+    "width": 96,
+    "height": 96,
+    "kind": "icon",
+    "sha256": "c837d8620c49f8f8b448f42a58931deb53266bba9d16dc6d49cebdc0afeddb1f"
+  },
+  {
+    "product": "ichikeshi",
+    "path": "assets/portal-icons/ichikeshi.png",
+    "source": "ichikeshi/assets/icon.png",
+    "owner_verified": true,
+    "verification": "Original icon tracked in apps-portal; only a resized derivative.",
+    "width": 96,
+    "height": 96,
+    "kind": "icon",
+    "sha256": "04061609bd573cb6235057e726d1b677c41a80d2bf1a782eb80c84149452da26"
+  },
+  {
+    "product": "realtime-search-shortcut",
+    "path": "assets/portal-icons/realtime-search-shortcut.png",
+    "source": "assets/realtime-search-shortcut-icon.png",
+    "owner_verified": true,
+    "verification": "Original icon tracked in apps-portal; only a resized derivative.",
+    "width": 96,
+    "height": 96,
+    "kind": "icon",
+    "sha256": "2d47310d9cbc5d3e2dd12959808d0c95cf746708b6ce7a5da7a0b27c33b87537"
+  },
+  {
+    "product": "yorishiro",
+    "path": "assets/portal-screens/yorishiro-1.jpg",
+    "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ea/5a/6a/ea5a6a19-0f4f-1a87-5b8f-52ba49f2c98a/01_.png/640x1386bb.jpg",
+    "store_url": "https://apps.apple.com/jp/app/yorishiro-%E3%82%88%E3%82%8A%E3%81%97%E3%82%8D-ai%E8%87%AA%E5%B7%B1%E5%88%86%E6%9E%90%E6%97%A5%E8%A8%98/id6764608171?uo=4",
+    "owner_verified": true,
+    "verification": "Current official JP App Store listing; developer matches owner. Visually inspected published marketing screenshot, with representative UI/sample data. Supplied framing preserved; no generated replacement.",
+    "width": 640,
+    "height": 1385,
+    "kind": "screenshot",
+    "sha256": "172dc195e090cf0b66d33a1684e15ed6df06c048d9c577abdafb86dd0c830003"
+  },
+  {
+    "product": "yorishiro",
+    "path": "assets/portal-screens/yorishiro-2.jpg",
+    "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/37/07/93/370793b2-7686-498c-0bcd-1e85c16fef92/02_.png/640x1386bb.jpg",
+    "store_url": "https://apps.apple.com/jp/app/yorishiro-%E3%82%88%E3%82%8A%E3%81%97%E3%82%8D-ai%E8%87%AA%E5%B7%B1%E5%88%86%E6%9E%90%E6%97%A5%E8%A8%98/id6764608171?uo=4",
+    "owner_verified": true,
+    "verification": "Current official JP App Store listing; developer matches owner. Visually inspected published marketing screenshot, with representative UI/sample data. Supplied framing preserved; no generated replacement.",
+    "width": 640,
+    "height": 1385,
+    "kind": "screenshot",
+    "sha256": "c15c3936f5387a88b0fc45b3852b1a7fafbebea2cebaf9237e7f30818ed38457"
+  },
+  {
+    "product": "tozankinen",
+    "path": "assets/portal-screens/tozankinen-1.jpg",
+    "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/bf/ac/4f/bfac4f17-14b9-6d79-6fd3-9c7c61b90e33/03_device.png/640x1386bb.jpg",
+    "store_url": "https://apps.apple.com/jp/app/%E7%99%BB%E5%B1%B1%E8%A8%98%E5%BF%B5-%E5%B1%B1%E5%90%8D-%E6%A8%99%E9%AB%98%E3%82%92%E5%86%99%E7%9C%9F%E3%81%AB%E6%96%87%E5%AD%97%E5%85%A5%E3%82%8C/id6797188526?uo=4",
+    "owner_verified": true,
+    "verification": "Current official JP App Store listing; developer matches owner. Visually inspected published marketing screenshot, with representative UI/sample data. Supplied framing preserved; no generated replacement.",
+    "width": 640,
+    "height": 1385,
+    "kind": "screenshot",
+    "sha256": "8a69c472a78b7e2a610949d3eaacd0e8b6c13761df382568e8eef446a3e55bd8"
+  },
+  {
+    "product": "ichikeshi",
+    "path": "assets/portal-screens/ichikeshi-1.jpg",
+    "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/a2/7d/15/a27d154d-9602-e764-6f21-d41044c197a6/01.png/640x1386bb.jpg",
+    "store_url": "https://apps.apple.com/jp/app/%E4%BD%8D%E7%BD%AE%E6%B6%88%E3%81%97-%E4%BD%8D%E7%BD%AE%E6%83%85%E5%A0%B1%E5%89%8A%E9%99%A4/id6816470389?uo=4",
+    "owner_verified": true,
+    "verification": "Current official JP App Store listing; developer matches owner. Visually inspected published marketing screenshot, with representative UI/sample data. Supplied framing preserved; no generated replacement.",
+    "width": 638,
+    "height": 1386,
+    "kind": "screenshot",
+    "sha256": "f1adea041324f375121b5f2a5078b53da1b89ee608319a9d1c12a0d7922380f7"
+  },
+  {
+    "product": "ichikeshi",
+    "path": "assets/portal-screens/ichikeshi-2.jpg",
+    "source": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/3d/44/40/3d444083-1d56-0c86-f612-5321eb576b8d/02.png/640x1386bb.jpg",
+    "store_url": "https://apps.apple.com/jp/app/%E4%BD%8D%E7%BD%AE%E6%B6%88%E3%81%97-%E4%BD%8D%E7%BD%AE%E6%83%85%E5%A0%B1%E5%89%8A%E9%99%A4/id6816470389?uo=4",
+    "owner_verified": true,
+    "verification": "Current official JP App Store listing; developer matches owner. Visually inspected published marketing screenshot, with representative UI/sample data. Supplied framing preserved; no generated replacement.",
+    "width": 638,
+    "height": 1386,
+    "kind": "screenshot",
+    "sha256": "d6a4c7a48176f261a7bb9898ad7fe9e081d925a6aea92e8397ee6799610644d7"
+  },
+  {
+    "product": "realtime-search-shortcut",
+    "path": "assets/portal-screens/realtime-search-shortcut-1.jpg",
+    "source": "owner-provided Chrome Web Store submission/store-assets/sc01.png",
+    "owner_verified": true,
+    "verification": "Owner-provided store submission screenshot, per local submission README. Public CWS listing names Yuichi Yokota. Visually inspected selection/search icon and context menu; personal regions already blurred. JPEG derivative only.",
+    "width": 1280,
+    "height": 800,
+    "kind": "screenshot",
+    "sha256": "d2f28167a803f49fa9261b7a2614c682d8f4e25faffaca4da2a4429f77c3e11d"
+  },
+  {
+    "product": "realtime-search-shortcut",
+    "path": "assets/portal-screens/realtime-search-shortcut-2.jpg",
+    "source": "owner-provided Chrome Web Store submission/store-assets/sc02.png",
+    "owner_verified": true,
+    "verification": "Owner-provided store submission screenshot, per local submission README. Public CWS listing names Yuichi Yokota. Visually inspected selection/search icon and context menu; personal regions already blurred. JPEG derivative only.",
+    "width": 1280,
+    "height": 800,
+    "kind": "screenshot",
+    "sha256": "cd7b0f8e5ef96c99438fde98412457a5facd52374f2b30d7755b3863084a91f2"
+  }
+]
