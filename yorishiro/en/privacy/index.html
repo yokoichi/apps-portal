@@ -29,7 +29,7 @@
 
     <main class="page legal-page">
       <h1>Privacy Policy</h1>
-      <p class="page-meta">Last updated: July 30, 2026</p>
+      <p class="page-meta">Last updated: October 6, 2026</p>
 
       <p class="lead">Yuichi Yokota (“we,” “us,” or “our”) establishes this Privacy Policy (the “Policy”) to describe how we handle Users' personal information in the Yorishiro iOS application, Android application, and web application (<a href="https://yorishiro.me" target="_blank" rel="noopener">https://yorishiro.me</a>; the “Web Version”; all versions collectively, the “App”).</p>
 
@@ -57,7 +57,8 @@
         <p>We store information self-reported by the User, including mood, mental state, physical energy scores, thinking tendencies, and self-care context.</p>
 
         <h3>5. Purchase history and plan status</h3>
-        <p>We store monthly or annual plan status, Apple StoreKit transaction information for the iOS version, and entitlement synchronization information. We do not collect payment details such as credit card information. Payments in the iOS version are processed by Apple, and we cannot access those payment details. The Android version does not currently offer in-app purchases. Paid-plan entitlement status is shared across platforms when the User signs in with the same account.</p>
+        <p>We store monthly or annual plan status, Apple StoreKit transaction information for the iOS version, and entitlement synchronization information. We do not collect payment details such as credit card information. Payments in the iOS version are processed by Apple, and we cannot access those payment details. Paid-plan entitlement status is shared across platforms when the User signs in with the same account.</p>
+        <p><strong>Android Version:</strong> Paid plans for the Android version may be purchased through Google Play subscriptions provided by Google LLC. Payments are processed by Google, and we cannot access credit card or other payment details. To verify purchases and manage entitlements, we store the purchase token issued by Google Play, the order number, the type of plan purchased, and the subscription status (such as the expiration date and whether auto-renewal is on), and we check the purchase status through the Google Play Developer API.</p>
         <p><strong>Web Version:</strong> Paid plans for the Web Version may be purchased by credit card through the payment system provided by Stripe, Inc. Credit card information is processed directly by Stripe, and we do not obtain or retain card numbers or similar information. To the extent necessary for billing management, we store the customer identifier issued by Stripe, subscription status, and purchase history. For information about Stripe's handling of personal information, see <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe's Privacy Policy</a>.</p>
 
         <h3>6. Usage data</h3>
@@ -66,6 +67,9 @@
         <h3>7. Standard app analytics data</h3>
         <p>We may obtain standard app usage statistics through Apple App Analytics for the iOS version and Google Play Console for the Android version, including crash reports, device types, and operating system versions. Apple or Google aggregates this information, and we do not receive it in a form that identifies individual Users.</p>
         <p><strong>Web Version:</strong> The Web Version does not currently use third-party analytics tools for advertising or tracking. Standard access logs maintained by the hosting provider, Vercel, Inc., including IP addresses and access timestamps, may be recorded for troubleshooting and security purposes.</p>
+
+        <h3>8. Voice data</h3>
+        <p>If the User uses voice input, the recorded audio is sent through our server to the OpenAI API for transcription. We do not store the audio or the transcription result on our server. The transcription result is returned to the User's device and is treated as journal text if the User saves it. We record only the usage time (in seconds) to manage usage limits. Voice input is optional, and microphone access can be revoked at any time in the device settings.</p>
       </section>
 
       <section>
@@ -88,13 +92,13 @@
         <h2>Article 4 (AI Features and Data Transmission)</h2>
 
         <h3>1. AI service used</h3>
-        <p>The App's AI features use the Claude API provided by Anthropic, PBC. (<a href="https://www.anthropic.com" target="_blank" rel="noopener">https://www.anthropic.com</a>).</p>
+        <p>The App's AI features use the Claude API provided by Anthropic, PBC. (<a href="https://www.anthropic.com" target="_blank" rel="noopener">https://www.anthropic.com</a>). Voice input transcription uses the API provided by OpenAI, L.L.C. (<a href="https://openai.com" target="_blank" rel="noopener">https://openai.com</a>).</p>
 
         <h3>2. Data transmitted</h3>
-        <p>Journal entries entered by Users, text submitted for conversational analysis, and data used to generate profiles are transmitted to Anthropic's API servers for AI processing.</p>
+        <p>Journal entries entered by Users, text submitted for conversational analysis, and data used to generate profiles are transmitted to Anthropic's API servers for AI processing. If the User uses voice input, the recorded audio is sent to OpenAI's API servers for transcription.</p>
 
         <h3>3. Handling of data</h3>
-        <p>Anthropic, PBC. publicly states that it does not use data received through its API to train its models. For current information about its data practices, see <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic, PBC.'s Privacy Policy</a>.</p>
+        <p>Anthropic, PBC. publicly states that it does not use data received through its API to train its models. For current information about its data practices, see <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic, PBC.'s Privacy Policy</a>. OpenAI, L.L.C. has also stated that, by default, it does not use data received through its API to train its models. For current information, see <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">OpenAI's Privacy Policy</a>.</p>
 
         <h3>4. User choice</h3>
         <p>Users may choose not to use the App's AI features. Please note that many of the App's main features will be unavailable if AI features are not used.</p>
@@ -126,7 +130,7 @@
           <li>When particularly necessary to improve public health or promote the sound development of children and obtaining the person's consent is difficult</li>
           <li>When cooperation is necessary for a national government body, local government, or a person acting on its behalf to perform duties prescribed by law, and obtaining the person's consent could impede performance of those duties</li>
         </ol>
-        <p>Transmission of data to Anthropic, PBC.'s API for AI analysis and transmission of information required for payment processing to Stripe, Inc. for the Web Version are essential components of providing the service. Users are deemed to consent to these transmissions by using the App.</p>
+        <p>Transmission of data to Anthropic, PBC.'s API for AI analysis, transmission of audio to OpenAI, L.L.C.'s API for voice input transcription, transmission of information required for payment processing to Stripe, Inc. for the Web Version, and transmission of purchase tokens to the Google Play Developer API of Google LLC to verify purchases in the Android version are essential components of providing the service. Users are deemed to consent to these transmissions by using the App.</p>
       </section>
 
       <section>
@@ -200,8 +204,10 @@
         <h2>Article 12 (International Data Transfers)</h2>
         <ol>
           <li>The App's AI features use the API provided by Anthropic, PBC., a company headquartered in the United States. Text entered by Users may be transmitted for AI processing to Anthropic servers in regions that include the United States.</li>
+          <li>Voice input transcription uses the API of OpenAI, L.L.C., a company headquartered in the United States. If the User uses voice input, the recorded audio may be sent for transcription to OpenAI servers in regions that include the United States.</li>
           <li>The App's database is stored in Supabase's Tokyo region.</li>
           <li>Payment processing for the Web Version uses services provided by Stripe, Inc., a company headquartered in the United States. Information required for payment may be processed on Stripe's servers.</li>
+          <li>Purchase verification in the Android version uses the Google Play Developer API of Google LLC, a company headquartered in the United States.</li>
           <li>The Web Version is hosted by Vercel, Inc. and uses Cloudflare, Inc. to protect against unauthorized access and bots. Both companies are headquartered in the United States.</li>
         </ol>
       </section>
