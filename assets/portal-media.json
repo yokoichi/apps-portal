@@ -146,5 +146,16 @@
     "height": 889,
     "kind": "screenshot",
     "sha256": "d267d4f73a258967b5a055322fb83aee3a9b8f0a363b051cf3dfc928097d8a59"
+  },
+  {
+    "product": "x-bookmark-exporter",
+    "path": "assets/portal-icons/x-bookmark-exporter.png",
+    "source": "AI-created original icon following the owner-requested bookmark outline and download-arrow design.",
+    "owner_verified": true,
+    "verification": "Created for the owner-requested design and resized to 96px PNG with alpha preserved. No third-party logo asset reused.",
+    "width": 96,
+    "height": 96,
+    "kind": "icon",
+    "sha256": "aef12ffdcaff46fcb71aa46e69a30862755bc699ba0707040a184b2a9d2dffba"
   }
 ]

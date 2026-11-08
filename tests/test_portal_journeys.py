@@ -45,7 +45,7 @@ class PortalJourneyTests(unittest.TestCase):
         rows = [a for a in d.by_tag('a') if 'portal-row' in a.get('class', '').split()]
         self.assertEqual([urlsplit(urljoin(ORIGIN + '/', a['href'])).path for a in rows],
                          ['/yorishiro/', '/tozankinen/', '/ichikeshi/', '/realtime-search-shortcut/', '/x-bookmark-exporter/'])
-        for a, name in zip(rows, ['Yorishiro', '登山記念', '位置消し', 'リアルタイム検索', 'X Bookmark Exporter']):
+        for a, name in zip(rows, ['Yorishiro', '登山記念', '位置消し', 'リアルタイム検索', 'Xブックマークエクスポーター']):
             self.assertIn(name, a.get('aria-label', ''))
         self.assertEqual(d.nested_controls, [])
 
