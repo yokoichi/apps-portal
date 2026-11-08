@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://apps.yokoichi.jp'
 DETAILS = ['yorishiro/index.html', 'yorishiro/en/index.html',
          'tozankinen/index.html', 'ichikeshi/index.html', 'ichikeshi/en/index.html',
-         'realtime-search-shortcut/index.html']
+         'realtime-search-shortcut/index.html', 'x-bookmark-exporter/index.html']
 PAGES = ['index.html', 'en/index.html'] + DETAILS
 
 
@@ -40,12 +40,12 @@ class Document(HTMLParser):
 
 
 class PortalJourneyTests(unittest.TestCase):
-    def test_root_offers_four_named_single_detail_links(self):
+    def test_root_offers_five_named_single_detail_links(self):
         d = Document(ROOT / 'index.html')
         rows = [a for a in d.by_tag('a') if 'portal-row' in a.get('class', '').split()]
         self.assertEqual([urlsplit(urljoin(ORIGIN + '/', a['href'])).path for a in rows],
-                         ['/yorishiro/', '/tozankinen/', '/ichikeshi/', '/realtime-search-shortcut/'])
-        for a, name in zip(rows, ['Yorishiro', '登山記念', '位置消し', 'リアルタイム検索']):
+                         ['/yorishiro/', '/tozankinen/', '/ichikeshi/', '/realtime-search-shortcut/', '/x-bookmark-exporter/'])
+        for a, name in zip(rows, ['Yorishiro', '登山記念', '位置消し', 'リアルタイム検索', 'X Bookmark Exporter']):
             self.assertIn(name, a.get('aria-label', ''))
         self.assertEqual(d.nested_controls, [])
 
@@ -56,7 +56,7 @@ class PortalJourneyTests(unittest.TestCase):
         for p in ['/yorishiro/support/', '/yorishiro/privacy/', '/yorishiro/terms/',
                   '/yorishiro/legal-notice/', '/tozankinen/support/', '/tozankinen/privacy/',
                   '/tozankinen/terms/', '/ichikeshi/support/', '/ichikeshi/privacy/',
-                  '/realtime-search-shortcut/privacy/']:
+                  '/realtime-search-shortcut/privacy/', '/x-bookmark-exporter/privacy/']:
             self.assertIn(p, hrefs)
         self.assertGreaterEqual(sum(a.get('href') == '#support' for a in d.by_tag('a')), 1)
         self.assertNotIn('/ichikeshi/terms/', hrefs)
@@ -81,7 +81,7 @@ class PortalJourneyTests(unittest.TestCase):
     def test_each_product_has_a_text_store_link(self):
         ids = {'yorishiro': '6764608171', 'tozankinen': '6797188526',
                'ichikeshi': '6816470389', 'realtime-search-shortcut': 'cbaakfanbmegjclflbbdgiegibfaoflo'}
-        for page in DETAILS:
+        for page in [page for page in DETAILS if not page.startswith('x-bookmark-exporter/')]:
             with self.subTest(page=page):
                 d = Document(ROOT / page)
                 links = [a for a in d.by_tag('a') if 'portal-store' in a.get('class', '').split()]
@@ -91,7 +91,7 @@ class PortalJourneyTests(unittest.TestCase):
                 self.assertNotIn('近日公開', (ROOT / page).read_text())
 
     def test_every_local_navigation_media_and_fragment_resolves(self):
-        for page in PAGES:
+        for page in PAGES + ['x-bookmark-exporter/privacy/index.html']:
             d = Document(ROOT / page)
             base = ORIGIN + '/' + page.removesuffix('index.html')
             for tag, a in d.elements:
@@ -142,6 +142,60 @@ class PortalJourneyTests(unittest.TestCase):
             self.assertEqual(len(sheets), 1)
             self.assertTrue(sheets[0].endswith('/assets/portal.css') or sheets[0] == 'assets/portal.css')
             self.assertFalse(any('fonts.googleapis' in str(a) for _, a in d.elements))
+
+    def test_exporter_unpublished_store_status_price_and_local_archive_features(self):
+        page = ROOT / 'x-bookmark-exporter/index.html'
+        text, document = page.read_text(), Document(page)
+        self.assertFalse(any('chromewebstore.google.com' in a.get('href', '') for a in document.by_tag('a')))
+        for phrase in ['Chromeウェブストアでの公開準備中', 'USD3.99', '1,000', '1〜50GB', '5GB',
+                       'CSV', 'JSON', 'Excel', 'GIF', 'MP4', 'index.html', '全件', '差分',
+                       'データ同期', '非公式', '保存画面の例（サンプルデータ）']:
+            self.assertIn(phrase, text)
+        for filename in ['index.html', 'en/index.html']:
+            d = Document(ROOT / filename)
+            rows = [a for a in d.by_tag('a') if 'portal-row' in a.get('class', '').split()]
+            self.assertEqual(len(rows), 5)
+            self.assertTrue(rows[-1]['href'].endswith('x-bookmark-exporter/'))
+            if filename.startswith('en/'):
+                self.assertEqual(rows[-1]['hreflang'], 'ja')
+            self.assertIn('mailto:main@yokoichi.jp', [a.get('href') for a in d.by_tag('a')])
+
+    def test_exporter_privacy_discloses_local_and_billing_data_separately(self):
+        path = ROOT / 'x-bookmark-exporter/privacy/index.html'
+        text, document = path.read_text(), Document(path)
+        for phrase in ['2026年11月8日', '横田裕市', '数値アカウントID', '診断', '一時メモリ',
+                       'pbs.twimg.com', 'video.twimg.com', 'HEAD', 'Range', 'Cookie', 'オフライン',
+                       'Cloudflare', 'D1', 'HMAC', 'SHA-256', '30日', '20分', '5回', 'Resend',
+                       'Stripe', 'CVC', '権利確認', '物理削除', 'アンインストール', 'GitHub Pages']:
+            self.assertIn(phrase, text)
+        self.assertIn('mailto:main@yokoichi.jp', [a.get('href') for a in document.by_tag('a')])
+        self.assertEqual(document.by_tag('script'), [])
+        self.assertIn('../../assets/styles.css', [a.get('href') for a in document.by_tag('link')])
+        self.assertNotIn('workers.dev', text)
+        self.assertNotIn('情報を一切収集しません', text)
+
+    def test_exporter_screenshot_bytes_and_ledger_match_actual_jpeg_dimensions(self):
+        import struct
+        ledger = json.loads((ROOT / 'assets/portal-media.json').read_text())
+        entry = next(item for item in ledger if item['path'] == 'assets/portal-screens/x-bookmark-exporter.jpg')
+        data = (ROOT / entry['path']).read_bytes()
+        self.assertEqual(hashlib.sha256(data).hexdigest(), entry['sha256'])
+        self.assertEqual(data[:2], b'\xff\xd8')
+        offset = 2
+        while offset < len(data):
+            self.assertEqual(data[offset], 255)
+            marker = data[offset + 1]
+            length = struct.unpack('>H', data[offset + 2:offset + 4])[0]
+            if marker in (0xc0, 0xc1, 0xc2):
+                height, width = struct.unpack('>HH', data[offset + 5:offset + 9])
+                break
+            offset += 2 + length
+        else:
+            self.fail('JPEG dimensions not found')
+        self.assertEqual((width, height), (1265, 889))
+        self.assertEqual((entry['width'], entry['height']), (width, height))
+        self.assertIn('synthetic data', entry['source'])
+        self.assertIn('implemented extension UI', entry['source'])
 
     def test_protected_legal_support_original_assets_and_routing_bytes_unchanged(self):
         baseline = json.loads((ROOT / 'tests/protected-baseline.json').read_text())

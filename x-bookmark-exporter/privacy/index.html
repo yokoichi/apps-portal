@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プライバシーポリシー | X Bookmark Exporter</title>
+  <meta name="description" content="X Bookmark Exporterの投稿・メディア・取得履歴のローカル保存と、購入・復元で取り扱うメール・認証・決済情報について。">
+  <link rel="canonical" href="https://apps.yokoichi.jp/x-bookmark-exporter/privacy/">
+  <link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../"><img src="../../assets/portal-icons/x-bookmark-exporter.svg" alt="" width="42" height="42"><span>yokoichi Apps</span></a>
+    <nav class="nav" aria-label="主要ページ"><a href="../">X Bookmark Exporter</a><a href="./" aria-current="page">プライバシーポリシー</a><a href="mailto:main@yokoichi.jp">お問い合わせ</a></nav>
+  </header>
+  <main class="page legal-page">
+    <h1>プライバシーポリシー</h1>
+    <p class="page-meta">最終更新日：2026年11月8日</p>
+    <p>横田裕市（以下「当方」）は、Chrome拡張「X Bookmark Exporter」と本紹介サイトで取り扱う情報について、以下のとおり説明します。本拡張はXの非公式ツールです。投稿の取得・保存は利用者の端末で行い、任意の購入・復元にはCloudflare、Resend、Stripeを利用します。</p>
+    <section>
+      <h2>1. ブラウザ内で取り扱う投稿・履歴情報</h2>
+      <p>利用者が拡張の開始ボタンを押したときに、XのBookmarks通信を利用して取得します。通常のX閲覧だけでは取得を開始しません。投稿ID・URL・日時・本文、作者のID・ユーザー名・表示名・プロフィール画像URL、引用・再投稿の本文・作者・ID・日時、返信先ID、URL展開情報、添付の画像・GIF・動画のURL・種類・所属投稿・alt・形式候補等を扱います。</p>
+      <p>これらを取得日時・状態とともに、このChromeプロファイルの拡張専用IndexedDBへ保存します。目的は投稿の保存、履歴の表示、CSV・JSON・Excel・投稿アーカイブの生成です。ブックマークした日時が応答にない場合は推測して補いません。</p>
+      <p>Xページ内でログイン中の数値アカウントIDをtwid Cookieから取り出し、履歴の分離と取得中のアカウント一致確認に使います。数値アカウントID、確認状態、全件・差分の取得方法、基準履歴ID、追加投稿ID、照合件数、完了日時、終了理由を端末内に保存します。投稿者のIDとは区別し、課金サービスへ送信しません。</p>
+      <p>全件・差分の次回設定、1〜50GB（既定5GB）のZIP分割設定をchrome.storage.localへ保存します。取得ジョブはそれぞれ独立した投稿データを持ち、削除同期や別端末へのデータ同期は行いません。</p>
+    </section>
+    <section>
+      <h2>2. Xへの通信と認証情報</h2>
+      <p>追加取得には現在のXページの認証ヘッダーとログインセッションを利用します。Cookie文字列や認証ヘッダーはXページ内の一時メモリだけで扱い、Xへの通信に使用します。拡張の保存領域、出力ファイル、診断ログ、開発者の課金サービスへ記録・送信しません。開始許可はタブに結び付けた短期・一回限りの許可としてchrome.storage.sessionで管理します。</p>
+    </section>
+    <section>
+      <h2>3. メディアの容量調査と保存</h2>
+      <p>静止画像はpbs.twimg.com、動画・GIFのMP4はvideo.twimg.comから取得します。CDNへの要求にログインCookieを付けません。利用者が必要なCDNアクセスを許可済みの場合、結果画面の表示・保存データの選択時にHEAD、必要に応じてRange要求で容量を自動調査します。容量調査のために本文全体をダウンロードしません。未許可時は利用者の操作で権限を要求します。</p>
+      <p>メディア本文は利用者が保存を開始したときに取得します。同じ応答に含まれる引用・再投稿の添付も対象にし、動画は最大ビットレートのMP4、GIFもMP4で保存します。Xと各CDNは通信先として要求を受け取ります。メディアのバイナリをIndexedDBへ永続保存しません。</p>
+      <p>投稿アーカイブは利用者が選択したフォルダの新規サブフォルダへ保存します。ZIP、archive.json、manifest.json、index.htmlには投稿・引用とメディアの対応が含まれます。保存先のハンドルを永続保存しません。オフラインHTMLは同梱データと展開済みローカルメディアを利用し、自動で外部通信しません。一般のダウンロード履歴は読み取りません。</p>
+    </section>
+    <section>
+      <h2>4. 診断ログ</h2>
+      <p>不具合の識別のため、取得の処理段階、固定エラーコード、HTTP状態、試行回数、ページ・項目の位置、件数、既知フィールドの型と未知フィールド数を、取得データに付随して端末内に保存します。直近200イベント、診断JSON全体256KiBまでに制限します。本文、投稿・ユーザーID、URL、Cookie、ヘッダー、メール、コード、token、生応答、任意の例外メッセージは含めません。</p>
+      <p>診断JSONの保存は利用者の操作で行い、自動アップロードはしません。サーバー側の外部サービス障害診断は固定イベント名・HTTPステータス・許可した例外分類と判別用真偽値だけを記録し、送信内容や認証値はログに出しません。</p>
+    </section>
+    <section>
+      <h2>5. 任意の購入・復元と外部サービス</h2>
+      <p>無料保存は認証や課金APIへの通信なしで利用できます。購入・復元を利用するときは、以下のサービスが機能提供の目的で情報を取り扱います。投稿本文、投稿者情報、メディアURL、取得アカウントの数値アカウントIDは課金サービスへ送りません。</p>
+      <ul>
+        <li><strong>Cloudflare Workers / D1：</strong>メールアドレス、メール確認コード、認証Bearer tokenをHTTPSで受け取ります。D1にはユーザーUUID、平文メール、コードのHMAC、30日セッションtokenのSHA-256 hash、送信制限用のメール・IPのHMAC、購入試行UUID、購入・決済ID、停止理由を保存します。コードとtokenの平文はD1へ保存しません。</li>
+        <li><strong>Resend：</strong>確認メールを送るために、送信先メールアドレスと確認コードを渡します。</li>
+        <li><strong>Stripe：</strong>決済と購入確認のために、メールアドレスとサーバーが生成したユーザー・購入試行UUIDを渡します。カード情報はStripeの決済画面で直接Stripeに入力され、当方はカード番号全体やCVCを保存しません。</li>
+      </ul>
+      <p>確認コードは20分・5回まで・一度だけ有効で、再送すると以前のコードは無効になります。セッション期限は30日です。拡張のセッションはchrome.storage.localの信頼された拡張コンテキストに限定して保存し、Xページへ渡しません。サインアウトは現在のセッションだけを失効させ、購入記録は維持します。購入権限は署名付き通知とStripe APIでの支払い確認を経た記録で判定します。</p>
+      <p>各サービスの取り扱いは、<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflareのプライバシーポリシー</a>、<a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resendのプライバシーポリシー</a>、<a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripeのプライバシーポリシー</a>もご確認ください。</p>
+    </section>
+    <section>
+      <h2>6. 保持・削除</h2>
+      <p>端末内の取得データは、利用者が保存結果の一覧で選択して削除するまで保持します。画面閉鎖、再起動、拡張更新、ファイル出力後も再利用できます。削除した取得データの投稿・引用・添付情報・診断をまとめて削除し、他の履歴や設定は保持します。拡張のアンインストールやChromeプロファイルの削除時には保存領域も削除されます。エクスポート済みファイルは残るため、利用者自身で管理・削除してください。</p>
+      <p>サーバー上のコードやセッションは有効期限で利用を拒否します。有効期限と物理削除の時点は別であり、期限到達時の即時自動削除は保証しません。購入・復元の記録は、権利確認・復元・不正防止に必要な間保持します。情報の削除に関するご相談は<a href="mailto:main@yokoichi.jp">main@yokoichi.jp</a>へお寄せください。</p>
+    </section>
+    <section>
+      <h2>7. 第三者提供とサイトのアクセス情報</h2>
+      <p>機能提供に必要な上記サービスへの送信を行います。情報を第三者へ販売したり、広告追跡に利用したりしません。拡張に広告・解析SDKや外部の実行コードの読み込みはありません。</p>
+      <p>この紹介サイトはGitHub Pagesで配信します。当方独自のアクセス解析は設置していませんが、ホスティング提供者がサービス提供・保護のためにIPアドレス等のアクセス情報を取り扱う場合があります。詳しくは<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHubのプライバシーステートメント</a>をご確認ください。</p>
+    </section>
+    <section>
+      <h2>8. 運営者・お問い合わせ</h2>
+      <p>運営者：横田裕市</p>
+      <p>本拡張の情報の取り扱いや削除のご相談：<a href="mailto:main@yokoichi.jp">main@yokoichi.jp</a></p>
+    </section>
+  </main>
+  <footer class="site-footer"><span>© 2026 yokoichi</span><div class="footer-links"><a href="../">X Bookmark Exporter</a><a href="mailto:main@yokoichi.jp">お問い合わせ</a></div></footer>
+</body>
+</html>

@@ -124,5 +124,27 @@
     "height": 800,
     "kind": "screenshot",
     "sha256": "cd7b0f8e5ef96c99438fde98412457a5facd52374f2b30d7755b3863084a91f2"
+  },
+  {
+    "product": "x-bookmark-exporter",
+    "path": "assets/portal-icons/x-bookmark-exporter.svg",
+    "source": "Original bookmark outline SVG drawn for X Bookmark Exporter public page.",
+    "owner_verified": true,
+    "verification": "Original geometric artwork; no X or third-party logo reused.",
+    "width": 96,
+    "height": 96,
+    "kind": "icon",
+    "sha256": "7309e3b286701c42aff7578f34c9d998e1ac9862f87f1a024f8a4fd73e8eba89"
+  },
+  {
+    "product": "x-bookmark-exporter",
+    "path": "assets/portal-screens/x-bookmark-exporter.jpg",
+    "source": "Browser screenshot of implemented extension UI displaying synthetic data.",
+    "owner_verified": true,
+    "verification": "Captured from the implemented results page with synthetic sample data; no image edits, personal information or secrets.",
+    "width": 1265,
+    "height": 889,
+    "kind": "screenshot",
+    "sha256": "d267d4f73a258967b5a055322fb83aee3a9b8f0a363b051cf3dfc928097d8a59"
   }
 ]

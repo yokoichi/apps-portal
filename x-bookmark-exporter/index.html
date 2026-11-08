@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>X Bookmark Exporter — Xのブックマークを、手元のアーカイブへ。</title>
+  <meta name="description" content="XのブックマークをCSV・JSON・Excelと画像・GIF・動画ZIPへ保存する非公式Chrome拡張。ローカル保存、アカウント別履歴、全件・差分取得に対応します。">
+  <link rel="canonical" href="https://apps.yokoichi.jp/x-bookmark-exporter/">
+  <link rel="stylesheet" href="../assets/portal.css">
+</head>
+<body class="portal-marketing">
+  <a class="portal-skip" href="#main">本文へ</a>
+  <header class="portal-header portal-shell">
+    <a class="brand portal-brand" href="../">yokoichi / tools</a>
+    <nav class="portal-nav" aria-label="製品の関連ページ"><a href="./privacy/">プライバシー</a><a href="mailto:main@yokoichi.jp">お問い合わせ</a></nav>
+  </header>
+  <main class="portal-shell" id="main">
+    <section class="portal-product-view" aria-labelledby="page-title">
+      <div class="portal-product-intro">
+        <div class="portal-product-meta"><img class="portal-icon portal-icon--extension" src="../assets/portal-icons/x-bookmark-exporter.svg" alt="" width="96" height="96"><span>Chrome拡張・非公式</span></div>
+        <h1 id="page-title">X Bookmark Exporter</h1>
+        <p class="portal-lead">Xのブックマークを、手元のアーカイブへ。</p>
+        <p class="portal-description">あとで読みたい投稿を、引用や添付メディアと一緒に保存。ブラウザ内の取得履歴から、CSV・JSON・Excelやオフラインで読める投稿アーカイブを作れます。</p>
+      </div>
+      <figure class="portal-media portal-media--extension"><img class="portal-screen" src="../assets/portal-screens/x-bookmark-exporter.jpg" alt="取得データと追加件数、ファイルの保存ボタン、ZIP分割サイズを表示した保存画面。" width="1265" height="889" fetchpriority="high"><figcaption>保存画面の例（サンプルデータ）</figcaption></figure>
+      <div class="portal-actions"><p>Chromeウェブストアでの公開準備中</p><a href="./privacy/">プライバシーポリシー</a></div>
+    </section>
+    <section class="portal-features" aria-labelledby="formats-title">
+      <h2 id="formats-title">投稿も、画像も、動画も。</h2>
+      <ul>
+        <li>CSV・JSON・Excelで投稿を保存。引用・再投稿を含む詳細は、アーカイブのarchive.jsonに保持します。</li>
+        <li>画像・GIF・動画をZIPへ保存。動画とGIFは応答に含まれるMP4から選び、GIFもMP4形式で保存します。</li>
+        <li>添付はmedia/作者ID/配下へ整理します。作者IDには投稿者のユーザー名を使い、不明な場合は数値IDから区別できるフォルダを作ります。引用・再投稿も本来の作者ごとです。</li>
+        <li>保存先フォルダを一度選択すると、既定5GB、1〜50GBの指定サイズごとに独立したZIPを自動分割・保存します。指定サイズを超える単一メディアは失敗一覧へ記録します。必要に応じて分割サイズを上げて再保存してください。</li>
+        <li>全ZIPを同じフォルダへ展開し、index.htmlを開けば、本文・引用・画像・MP4をオフラインで閲覧できます。</li>
+      </ul>
+    </section>
+    <section class="portal-features" aria-labelledby="history-title">
+      <h2 id="history-title">取得履歴から、必要な分を。</h2>
+      <p>拡張の開始ボタンから取得し、ページごとにブラウザ内へ自動保存します。取得中はXタブを開いたままにしてください。取得後は画面を閉じても、保存済みデータを一覧から再利用できます。</p>
+      <p>アカウントごとに履歴を分け、全件取得と差分取得を選択できます。差分取得は購入者向けで、同じアカウントの確認済み取得履歴を基準に、既知の境界まで追加分を照合します。出力は「今回追加分」「保存済み全件」を選べます。</p>
+      <p>データ同期は行いません。保存済み全件は累積アーカイブで、X上の削除とは同期しません。過去位置の変更を確認したい場合は全件取得を利用してください。</p>
+    </section>
+    <section class="portal-features" aria-labelledby="price-title">
+      <h2 id="price-title">無料で1,000投稿。全件保存は買い切り。</h2>
+      <p>各取得データの先頭1,000件の投稿と、その引用・添付を無料で保存できます。取得データ自体はブラウザ内に残ります。全件保存と差分取得はUSD3.99の買い切り購入で利用できます。</p>
+      <p>購入前の認証と購入権限の復元には、メール確認コードを使います。お支払いはStripeの決済画面で行います。別のPCでも同じメールで購入権限を復元できます。取得した投稿データは別PCへ同期されません。</p>
+    </section>
+    <section class="portal-features" aria-labelledby="trust-title">
+      <h2 id="trust-title">手元に保存する、非公式ツールです。</h2>
+      <p>Xの公式製品ではなく、Xとの提携はありません。取得できるのはXが返す範囲です。削除済み・閲覧できない投稿や、すべての過去投稿の取得を保証するものではありません。</p>
+      <p>投稿データはブラウザ内と利用者の保存先で扱います。購入・復元時にはメール・認証・決済情報を外部サービスへ送信します。詳しくはプライバシーポリシーをご確認ください。</p>
+    </section>
+    <section class="portal-product-support" aria-labelledby="support-title">
+      <h2 id="support-title">サポートとプライバシー</h2>
+      <p>運営者：横田裕市</p>
+      <div class="portal-links"><a href="./privacy/">プライバシーポリシー</a><a href="mailto:main@yokoichi.jp">main@yokoichi.jp</a></div>
+    </section>
+  </main>
+  <footer class="portal-footer portal-shell"><span>© 2026 yokoichi</span><div class="portal-links"><a href="./privacy/">プライバシー</a><a href="mailto:main@yokoichi.jp">お問い合わせ</a></div></footer>
+</body>
+</html>
