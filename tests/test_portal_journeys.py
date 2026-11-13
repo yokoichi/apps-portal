@@ -80,14 +80,15 @@ class PortalJourneyTests(unittest.TestCase):
 
     def test_each_product_has_a_text_store_link(self):
         ids = {'yorishiro': '6764608171', 'tozankinen': '6797188526',
-               'ichikeshi': '6816470389', 'realtime-search-shortcut': 'cbaakfanbmegjclflbbdgiegibfaoflo'}
-        for page in [page for page in DETAILS if not page.startswith('x-bookmark-exporter/')]:
+               'ichikeshi': '6816470389', 'realtime-search-shortcut': 'cbaakfanbmegjclflbbdgiegibfaoflo',
+               'x-bookmark-exporter': 'kpcmcipljmfiinbmlgajcjcagmimhjna'}
+        for page in DETAILS:
             with self.subTest(page=page):
                 d = Document(ROOT / page)
                 links = [a for a in d.by_tag('a') if 'portal-store' in a.get('class', '').split()]
                 self.assertEqual(len(links), 1)
                 self.assertIn(ids[page.split('/')[0]], links[0]['href'])
-                self.assertIn('App Store' if 'realtime' not in page else 'Chrome Web Store', (ROOT / page).read_text())
+                self.assertIn('Chrome Web Store' if page.split('/')[0] in ('realtime-search-shortcut', 'x-bookmark-exporter') else 'App Store', (ROOT / page).read_text())
                 self.assertNotIn('近日公開', (ROOT / page).read_text())
 
     def test_every_local_navigation_media_and_fragment_resolves(self):
@@ -143,11 +144,12 @@ class PortalJourneyTests(unittest.TestCase):
             self.assertTrue(sheets[0].endswith('/assets/portal.css') or sheets[0] == 'assets/portal.css')
             self.assertFalse(any('fonts.googleapis' in str(a) for _, a in d.elements))
 
-    def test_exporter_unpublished_store_status_price_and_local_archive_features(self):
+    def test_exporter_store_status_price_and_local_archive_features(self):
         page = ROOT / 'x-bookmark-exporter/index.html'
         text, document = page.read_text(), Document(page)
-        self.assertFalse(any('chromewebstore.google.com' in a.get('href', '') for a in document.by_tag('a')))
-        for phrase in ['Chromeウェブストアでの公開準備中', 'USD3.99', '1,000', '1〜50GB', '5GB',
+        self.assertTrue(any('chromewebstore.google.com/detail/' in a.get('href', '') and a['href'].endswith('/kpcmcipljmfiinbmlgajcjcagmimhjna') for a in document.by_tag('a')))
+        self.assertNotIn('公開準備中', text)
+        for phrase in ['Chrome Web Storeで開く', 'USD3.99', '1,000', '1〜50GB', '5GB',
                        'CSV', 'JSON', 'Excel', 'GIF', 'MP4', 'index.html', '全件', '差分',
                        'データ同期', '非公式', '保存画面の例（サンプルデータ）']:
             self.assertIn(phrase, text)

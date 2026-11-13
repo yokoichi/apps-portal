@@ -6,7 +6,7 @@ GitHub Pages で公開するアプリポータル用の静的サイトです。
 - Yorishiro URL: https://apps.yokoichi.jp/yorishiro/
 - Realtime Search Shortcut URL: https://apps.yokoichi.jp/realtime-search-shortcut/
 - Ichikeshi URL: https://apps.yokoichi.jp/ichikeshi/ (en: https://apps.yokoichi.jp/ichikeshi/en/)
-- Xブックマークエクスポーター URL: https://apps.yokoichi.jp/x-bookmark-exporter/ (Chrome Web Store公開準備中)
+- Xブックマークエクスポーター URL: https://apps.yokoichi.jp/x-bookmark-exporter/ (Chrome Web Store公開中)
 - Xブックマークエクスポーター Privacy: https://apps.yokoichi.jp/x-bookmark-exporter/privacy/
 - Privacy Policy URL: https://apps.yokoichi.jp/yorishiro/privacy/
 - Terms URL: https://apps.yokoichi.jp/yorishiro/terms/
@@ -51,4 +51,4 @@ For detailed instructions on adding another product page, read `docs/SITE_HANDOF
 
 ## Xブックマークエクスポーター
 
-紹介・プライバシーページとJA/ENホームの5番目の製品導線を用意しています。ストアURLが未発行のため、ストアや購入へのリンクは掲載していません。保存画面のJPEGは実装UIに合成サンプルデータを表示して撮影し、画像編集を行っていません。出典・寸法・SHA-256はassets/portal-media.jsonに記録しています。問い合わせ先はmain@yokoichi.jpです。
+紹介・プライバシーページとJA/ENホームの5番目の製品導線を用意しています。紹介ページの保存画面の下にChrome Web Storeへのリンクを掲載しています。保存画面のJPEGは実装UIに合成サンプルデータを表示して撮影し、画像編集を行っていません。出典・寸法・SHA-256はassets/portal-media.jsonに記録しています。問い合わせ先はmain@yokoichi.jpです。
