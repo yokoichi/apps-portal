@@ -165,7 +165,7 @@ class PortalJourneyTests(unittest.TestCase):
     def test_exporter_privacy_discloses_local_and_billing_data_separately(self):
         path = ROOT / 'x-bookmark-exporter/privacy/index.html'
         text, document = path.read_text(), Document(path)
-        for phrase in ['2026年11月8日', '横田裕市', '数値アカウントID', '診断', '一時メモリ',
+        for phrase in ['2026年11月14日', '横田裕市', 'webRequest', '数値アカウントID', '診断', '一時メモリ',
                        'pbs.twimg.com', 'video.twimg.com', 'HEAD', 'Range', 'Cookie', 'オフライン',
                        'Cloudflare', 'D1', 'HMAC', 'SHA-256', '30日', '20分', '5回', 'Resend',
                        'Stripe', 'CVC', '権利確認', '物理削除', 'アンインストール', 'GitHub Pages']:
