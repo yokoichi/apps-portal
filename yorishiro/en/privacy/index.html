@@ -29,7 +29,7 @@
 
     <main class="page legal-page">
       <h1>Privacy Policy</h1>
-      <p class="page-meta">Last updated: October 6, 2026</p>
+      <p class="page-meta">Last updated: November 15, 2026</p>
 
       <p class="lead">Yuichi Yokota (“we,” “us,” or “our”) establishes this Privacy Policy (the “Policy”) to describe how we handle Users' personal information in the Yorishiro iOS application, Android application, and web application (<a href="https://yorishiro.me" target="_blank" rel="noopener">https://yorishiro.me</a>; the “Web Version”; all versions collectively, the “App”).</p>
 
@@ -43,8 +43,9 @@
         <p>The App collects the following information.</p>
 
         <h3>1. Account identifiers</h3>
-        <p><strong>iOS version:</strong> An identifier is issued internally through Supabase Anonymous Authentication. By default, it does not contain personally identifying information such as a name, email address, or telephone number. It is used only to manage journal data, plan status, and usage limits. In the Android version, if the User does not register an account, journal data is stored only on the User's device and is not sent to our servers.</p>
-        <p>If a User voluntarily registers an account using an email address, Apple ID, or Google Account, we collect the email address or identifier provided by the authentication provider. Available authentication methods vary by platform; the Android version supports email addresses and Google Accounts. Account registration is used to synchronize journal data across multiple devices and the Web Version. The main features of the iOS and Android versions remain available locally on the device without registration.</p>
+        <p><strong>iOS version:</strong> An identifier is issued internally through Supabase Anonymous Authentication. By default, it does not contain personally identifying information such as a name, email address, or telephone number. It is used only to manage journal data, plan status, and usage limits.</p>
+        <p><strong>Android version:</strong> Journal entries created while signed out are saved on the device and do not sync to Yorishiro’s servers. See Article 5 for device backups.</p>
+        <p>If a User voluntarily registers an account using an email address, Apple ID, or Google Account, we collect the email address or identifier provided by the authentication provider. Account registration is used to synchronize journal data across multiple devices and the Web Version. The main features of the iOS and Android versions remain available locally on the device without registration.</p>
         <p><strong>Web Version:</strong> Registration using an email address, Apple ID, or Google Account is required to use the Web Version. We collect the applicable email address or the identifier provided by the authentication provider at registration.</p>
 
         <h3>2. Nickname</h3>
@@ -58,7 +59,7 @@
 
         <h3>5. Purchase history and plan status</h3>
         <p>We store monthly or annual plan status, Apple StoreKit transaction information for the iOS version, and entitlement synchronization information. We do not collect payment details such as credit card information. Payments in the iOS version are processed by Apple, and we cannot access those payment details. Paid-plan entitlement status is shared across platforms when the User signs in with the same account.</p>
-        <p><strong>Android Version:</strong> Paid plans for the Android version may be purchased through Google Play subscriptions provided by Google LLC. Payments are processed by Google, and we cannot access credit card or other payment details. To verify purchases and manage entitlements, we store the purchase token issued by Google Play, the order number, the type of plan purchased, and the subscription status (such as the expiration date and whether auto-renewal is on), and we check the purchase status through the Google Play Developer API.</p>
+        <p><strong>Android Version:</strong> Paid plans for the Android version may be purchased through Google Play subscriptions provided by Google LLC. Payments are processed by Google, and we cannot access credit card or other payment details. At purchase, we send the internal Yorishiro account identifier to Google Play to associate the purchase with the account. To verify purchases and manage entitlements, we store the purchase token issued by Google Play, the order number, the type of plan purchased, and the subscription status (such as the expiration date and whether auto-renewal is on), and we check the purchase status through the Google Play Developer API.</p>
         <p><strong>Web Version:</strong> Paid plans for the Web Version may be purchased by credit card through the payment system provided by Stripe, Inc. Credit card information is processed directly by Stripe, and we do not obtain or retain card numbers or similar information. To the extent necessary for billing management, we store the customer identifier issued by Stripe, subscription status, and purchase history. For information about Stripe's handling of personal information, see <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe's Privacy Policy</a>.</p>
 
         <h3>6. Usage data</h3>
@@ -108,13 +109,16 @@
         <h2>Article 5 (Data Storage and Management)</h2>
 
         <h3>1. Storage location</h3>
-        <p>App data is stored in a database in Supabase's Northeast Asia (Tokyo) region.</p>
+        <p>Journal data synced to our servers is stored in a database in Supabase's Northeast Asia (Tokyo) region.</p>
 
         <h3>2. Security measures</h3>
         <p>All communications are encrypted using HTTPS. API keys are managed only on the server side and cannot be accessed directly by the client application.</p>
 
+        <p><strong>Android version:</strong> To prevent abuse of features such as AI analysis, the App uses the Google Play Integrity API. The App sends Google a hash calculated from the request and sends the resulting token to our server. We use the verification result to check the authenticity of the app and device. This check does not send journal text to Google.</p>
+
         <h3>3. Backups</h3>
         <p>Data is backed up automatically in accordance with Supabase's standard backup policy. Backups are maintained for disaster recovery and data protection and are not retained longer than necessary.</p>
+        <p><strong>Android version:</strong> Depending on device settings, Android may include journal entries and settings in cloud backups or transfer them to a new device. Sign-in credentials and purchase tokens awaiting synchronization are excluded.</p>
 
         <h3>4. Data retention period</h3>
         <p>Data is retained for as long as the User uses the App. If the User requests deletion, the data will be deleted in accordance with Article 7 of this Policy.</p>
@@ -137,7 +141,7 @@
         <h2>Article 7 (User Rights and Data Deletion Requests)</h2>
 
         <h3>1. Deleting an account in the App or Web Version</h3>
-        <p>Users may delete their account and journal data at any time by going to Settings → Account → Delete Account in the App or Web Version. Deletion removes journal data, analysis results, and account information stored on the server, as well as journal data stored on the device. This action cannot be undone.</p>
+        <p>Users may delete their account and journal data at any time by going to Settings → Account → Delete Account in the App or Web Version. Deletion removes journal data, analysis results, and account information stored on the server, as well as journal data stored on the device. This action cannot be undone. To stop billing for a Google Play subscription, cancel it separately under Subscriptions in the Google Account used for the purchase.</p>
 
         <h3>2. Requests for disclosure, correction, suspension of use, or deletion</h3>
         <p>In addition to in-app deletion described above, Users may request disclosure, correction, suspension of use, or deletion of their information.</p>
