@@ -179,5 +179,16 @@
     "height": 800,
     "kind": "screenshot",
     "sha256": "4c2c4110489a74303de887b61fbc00ab611dfb3aaed3699d40ba9196b0748a43"
+  },
+  {
+    "product": "kokomemo",
+    "path": "assets/portal-icons/kokomemo.png",
+    "source": "kokomemo/assets/icon.png",
+    "owner_verified": true,
+    "verification": "Original app icon drawn by the kokomemo project's own icon script (docs/design/app-icon-1024.png); only resized derivatives. No pictogram asset used.",
+    "width": 96,
+    "height": 96,
+    "kind": "icon",
+    "sha256": "0d76a5b39cbfa915f86dedd676a81505fb40535aa2afa18a2431707e1ba1bf1b"
   }
 ]

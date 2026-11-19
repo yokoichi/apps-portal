@@ -13,6 +13,8 @@ DETAILS = ['yorishiro/index.html', 'yorishiro/en/index.html',
          'tozankinen/index.html', 'ichikeshi/index.html', 'ichikeshi/en/index.html',
          'realtime-search-shortcut/index.html', 'x-bookmark-exporter/index.html']
 PAGES = ['index.html', 'en/index.html'] + DETAILS
+KOKOMEMO_PAGES = ['kokomemo/index.html', 'kokomemo/privacy/index.html', 'kokomemo/support/index.html',
+                  'kokomemo/en/index.html', 'kokomemo/en/privacy/index.html', 'kokomemo/en/support/index.html']
 
 
 class Document(HTMLParser):
@@ -40,12 +42,12 @@ class Document(HTMLParser):
 
 
 class PortalJourneyTests(unittest.TestCase):
-    def test_root_offers_six_named_single_detail_links(self):
+    def test_root_offers_seven_named_single_detail_links(self):
         d = Document(ROOT / 'index.html')
         rows = [a for a in d.by_tag('a') if 'portal-row' in a.get('class', '').split()]
         self.assertEqual([urlsplit(urljoin(ORIGIN + '/', a['href'])).path for a in rows],
-                         ['/yorishiro/', '/tozankinen/', '/ichikeshi/', '/realtime-search-shortcut/', '/x-bookmark-exporter/', '/matomete-hihyoji/'])
-        for a, name in zip(rows, ['Yorishiro', '登山記念', '位置消し', 'リアルタイム検索', 'Xブックマークエクスポーター', 'まとめて非表示 for メルカリ']):
+                         ['/yorishiro/', '/tozankinen/', '/ichikeshi/', '/kokomemo/', '/realtime-search-shortcut/', '/x-bookmark-exporter/', '/matomete-hihyoji/'])
+        for a, name in zip(rows, ['Yorishiro', '登山記念', '位置消し', 'kokomemo', 'リアルタイム検索', 'Xブックマークエクスポーター', 'まとめて非表示 for メルカリ']):
             self.assertIn(name, a.get('aria-label', ''))
         self.assertEqual(d.nested_controls, [])
 
@@ -57,7 +59,7 @@ class PortalJourneyTests(unittest.TestCase):
                   '/yorishiro/legal-notice/', '/tozankinen/support/', '/tozankinen/privacy/',
                   '/tozankinen/terms/', '/ichikeshi/support/', '/ichikeshi/privacy/',
                   '/realtime-search-shortcut/privacy/', '/x-bookmark-exporter/privacy/',
-                  '/matomete-hihyoji/privacy/']:
+                  '/matomete-hihyoji/privacy/', '/kokomemo/support/', '/kokomemo/privacy/']:
             self.assertIn(p, hrefs)
         self.assertGreaterEqual(sum(a.get('href') == '#support' for a in d.by_tag('a')), 1)
         self.assertNotIn('/ichikeshi/terms/', hrefs)
@@ -94,7 +96,7 @@ class PortalJourneyTests(unittest.TestCase):
 
     def test_every_local_navigation_media_and_fragment_resolves(self):
         for page in PAGES + ['x-bookmark-exporter/privacy/index.html', 'matomete-hihyoji/index.html',
-                             'matomete-hihyoji/privacy/index.html']:
+                             'matomete-hihyoji/privacy/index.html'] + KOKOMEMO_PAGES:
             d = Document(ROOT / page)
             base = ORIGIN + '/' + page.removesuffix('index.html')
             for tag, a in d.elements:
@@ -158,10 +160,10 @@ class PortalJourneyTests(unittest.TestCase):
         for filename in ['index.html', 'en/index.html']:
             d = Document(ROOT / filename)
             rows = [a for a in d.by_tag('a') if 'portal-row' in a.get('class', '').split()]
-            self.assertEqual(len(rows), 6)
-            self.assertTrue(rows[4]['href'].endswith('x-bookmark-exporter/'))
+            self.assertEqual(len(rows), 7)
+            self.assertTrue(rows[5]['href'].endswith('x-bookmark-exporter/'))
             if filename.startswith('en/'):
-                self.assertEqual(rows[4]['hreflang'], 'ja')
+                self.assertEqual(rows[5]['hreflang'], 'ja')
             self.assertIn('mailto:main@yokoichi.jp', [a.get('href') for a in d.by_tag('a')])
 
     def test_exporter_privacy_discloses_local_and_billing_data_separately(self):
@@ -206,6 +208,43 @@ class PortalJourneyTests(unittest.TestCase):
         for path, sha in baseline['files'].items():
             with self.subTest(path=path):
                 self.assertEqual(hashlib.sha256((ROOT / path).read_bytes()).hexdigest(), sha)
+
+    def test_kokomemo_pages_pair_languages_and_wait_for_the_store(self):
+        for page in KOKOMEMO_PAGES:
+            with self.subTest(page=page):
+                d = Document(ROOT / page)
+                text = (ROOT / page).read_text()
+                en = '/en/' in page
+                self.assertEqual(d.by_tag('html')[0].get('lang'), 'en' if en else 'ja')
+                self.assertEqual(d.by_tag('script'), [])
+                self.assertFalse(any('apps.apple.com' in a.get('href', '') for a in d.by_tag('a')))
+                switches = [a for a in d.by_tag('a') if 'locale-switch' in a.get('class', '').split()]
+                self.assertEqual(len(switches), 1)
+                counterpart = page.replace('kokomemo/en/', 'kokomemo/') if en else page.replace('kokomemo/', 'kokomemo/en/')
+                target = urlsplit(urljoin(ORIGIN + '/' + page, switches[0]['href'])).path
+                self.assertEqual(target, '/' + counterpart.removesuffix('index.html'))
+                alternates = {a.get('hreflang'): a.get('href') for a in d.by_tag('link') if a.get('rel') == 'alternate'}
+                self.assertEqual(set(alternates), {'ja', 'en', 'x-default'})
+                if '/privacy/' in page or '/support/' in page:
+                    self.assertIn('https://forms.gle/NJ1tqL46KGdKBHGN7', text)
+        for page, status in [('kokomemo/index.html', 'App Store申請準備中'), ('kokomemo/en/index.html', 'App Store submission in preparation')]:
+            self.assertIn(status, (ROOT / page).read_text())
+
+    def test_kokomemo_privacy_discloses_storage_location_and_apple_services(self):
+        for page, phrases in [
+            ('kokomemo/privacy/index.html', ['2026年11月20日', '横田裕市', 'CloudKit', 'プライベートデータベース',
+                                             '領域監視', '常に', '位置の履歴を記録しません', 'MapKit', 'ジオコーディング',
+                                             '写真選択画面', 'JPEG', 'メタデータ', 'ローカル通知', 'StoreKit',
+                                             'SDK', '30日', 'ストレージ管理', '日本デザインセンター／EXPERIENCE JAPAN PICTOGRAMS']),
+            ('kokomemo/en/privacy/index.html', ['November 20, 2026', 'Yuichi Yokota', 'CloudKit', 'private database',
+                                                'region monitoring', 'Always', 'does not record a history', 'MapKit', 'geocoding',
+                                                'photo picker', 'JPEG', 'Metadata', 'local notifications', 'StoreKit',
+                                                'SDK', '30 days', 'iCloud storage', 'Nippon Design Center / EXPERIENCE JAPAN PICTOGRAMS'])]:
+            text = (ROOT / page).read_text()
+            for phrase in phrases:
+                with self.subTest(page=page, phrase=phrase):
+                    self.assertIn(phrase, text)
+            self.assertFalse(any('ndc.co.jp' in a.get('href', '') for a in Document(ROOT / page).by_tag('a')))
 
     def test_ichikeshi_copy_explains_processing_and_advertising_separately(self):
         ja = (ROOT / 'ichikeshi/index.html').read_text()
