@@ -40,12 +40,12 @@ class Document(HTMLParser):
 
 
 class PortalJourneyTests(unittest.TestCase):
-    def test_root_offers_five_named_single_detail_links(self):
+    def test_root_offers_six_named_single_detail_links(self):
         d = Document(ROOT / 'index.html')
         rows = [a for a in d.by_tag('a') if 'portal-row' in a.get('class', '').split()]
         self.assertEqual([urlsplit(urljoin(ORIGIN + '/', a['href'])).path for a in rows],
-                         ['/yorishiro/', '/tozankinen/', '/ichikeshi/', '/realtime-search-shortcut/', '/x-bookmark-exporter/'])
-        for a, name in zip(rows, ['Yorishiro', '登山記念', '位置消し', 'リアルタイム検索', 'Xブックマークエクスポーター']):
+                         ['/yorishiro/', '/tozankinen/', '/ichikeshi/', '/realtime-search-shortcut/', '/x-bookmark-exporter/', '/matomete-hihyoji/'])
+        for a, name in zip(rows, ['Yorishiro', '登山記念', '位置消し', 'リアルタイム検索', 'Xブックマークエクスポーター', 'まとめて非表示 for メルカリ']):
             self.assertIn(name, a.get('aria-label', ''))
         self.assertEqual(d.nested_controls, [])
 
@@ -56,7 +56,8 @@ class PortalJourneyTests(unittest.TestCase):
         for p in ['/yorishiro/support/', '/yorishiro/privacy/', '/yorishiro/terms/',
                   '/yorishiro/legal-notice/', '/tozankinen/support/', '/tozankinen/privacy/',
                   '/tozankinen/terms/', '/ichikeshi/support/', '/ichikeshi/privacy/',
-                  '/realtime-search-shortcut/privacy/', '/x-bookmark-exporter/privacy/']:
+                  '/realtime-search-shortcut/privacy/', '/x-bookmark-exporter/privacy/',
+                  '/matomete-hihyoji/privacy/']:
             self.assertIn(p, hrefs)
         self.assertGreaterEqual(sum(a.get('href') == '#support' for a in d.by_tag('a')), 1)
         self.assertNotIn('/ichikeshi/terms/', hrefs)
@@ -92,7 +93,8 @@ class PortalJourneyTests(unittest.TestCase):
                 self.assertNotIn('近日公開', (ROOT / page).read_text())
 
     def test_every_local_navigation_media_and_fragment_resolves(self):
-        for page in PAGES + ['x-bookmark-exporter/privacy/index.html']:
+        for page in PAGES + ['x-bookmark-exporter/privacy/index.html', 'matomete-hihyoji/index.html',
+                             'matomete-hihyoji/privacy/index.html']:
             d = Document(ROOT / page)
             base = ORIGIN + '/' + page.removesuffix('index.html')
             for tag, a in d.elements:
@@ -156,10 +158,10 @@ class PortalJourneyTests(unittest.TestCase):
         for filename in ['index.html', 'en/index.html']:
             d = Document(ROOT / filename)
             rows = [a for a in d.by_tag('a') if 'portal-row' in a.get('class', '').split()]
-            self.assertEqual(len(rows), 5)
-            self.assertTrue(rows[-1]['href'].endswith('x-bookmark-exporter/'))
+            self.assertEqual(len(rows), 6)
+            self.assertTrue(rows[4]['href'].endswith('x-bookmark-exporter/'))
             if filename.startswith('en/'):
-                self.assertEqual(rows[-1]['hreflang'], 'ja')
+                self.assertEqual(rows[4]['hreflang'], 'ja')
             self.assertIn('mailto:main@yokoichi.jp', [a.get('href') for a in d.by_tag('a')])
 
     def test_exporter_privacy_discloses_local_and_billing_data_separately(self):

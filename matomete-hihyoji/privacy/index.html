@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プライバシーポリシー | まとめて非表示 for メルカリ</title>
+  <meta name="description" content="メルカリの非公式Chrome拡張「まとめて非表示 for メルカリ」が端末内で扱う商品ID・商品名・URLと設定について。外部への送信は行いません。">
+  <link rel="canonical" href="https://apps.yokoichi.jp/matomete-hihyoji/privacy/">
+  <link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../"><img src="../../assets/portal-icons/matomete-hihyoji.png" alt="" width="42" height="42"><span>yokoichi Apps</span></a>
+    <nav class="nav" aria-label="主要ページ"><a href="../">まとめて非表示 for メルカリ</a><a href="./" aria-current="page">プライバシーポリシー</a><a href="mailto:main@yokoichi.jp">お問い合わせ</a></nav>
+  </header>
+  <main class="page legal-page">
+    <h1>プライバシーポリシー</h1>
+    <p class="page-meta">最終更新日：2026年11月20日</p>
+    <p><strong>本拡張はメルカリの非公式ツールです。株式会社メルカリとは無関係で、提携・承認はありません。</strong></p>
+    <p>横田裕市（以下「当方」）は、Chrome拡張「まとめて非表示 for メルカリ」（以下「本拡張」）と本紹介サイトで取り扱う情報について、以下のとおり説明します。本拡張は外部のサーバーと通信せず、情報はすべて利用者のブラウザ内で扱います。</p>
+    <section>
+      <h2>1. ページから読み取る情報</h2>
+      <p>本拡張は jp.mercari.com のページでだけ動作します。利用者が自分のプロフィールで一括処理を開始したときに、一覧に表示された売り切れ商品の商品ID・商品名・商品URLと、売り切れ・取引中などの表示を読み取ります。商品ページでは、売り切れ・取引状態の表示と「プロフィールから非表示」「プロフィールに表示」などのボタンの有無を確認します。自分のプロフィールであることの確認には、ページ上の表示（編集ボタン等）を使います。</p>
+      <p>ユーザー名・価格・商品説明・メッセージ・取引相手の情報・ログイン情報・パスワード・Cookie・決済情報は読み取って保存しません。「診断」の結果は画面に表示するだけで、ユーザー名・価格・説明文を含みません。利用者がコピーしない限り、どこにも渡りません。</p>
+    </section>
+    <section>
+      <h2>2. ブラウザ内に保存する情報</h2>
+      <p>このChromeプロファイルの拡張専用領域（chrome.storage.local）に、次の情報を保存します。</p>
+      <ul>
+        <li>処理間隔の設定（最小・最大秒数）</li>
+        <li>処理キュー：対象の商品ID・商品名・商品URL、各商品の状態（処理済み・スキップ・失敗）と理由、進捗、開始・終了時刻</li>
+        <li>拡張が処理用に開いたタブのID（閉じ忘れたタブを回収するため）</li>
+      </ul>
+      <p>また、ブラウザの再起動を判別するための印だけを chrome.storage.session に保存します。これらは処理の継続・停止・結果表示のために使います。</p>
+    </section>
+    <section>
+      <h2>3. 外部への送信</h2>
+      <p>本拡張は、開発者のサーバーを含む外部のサーバーへ情報を送信しません。解析・広告のSDKや、外部から読み込んで実行するコードはありません。本拡張の操作でブラウザが通信する先は、利用者がふだん使っているメルカリ（jp.mercari.com）だけです。商品ページを開いてボタンを押すと、その操作はメルカリに対して通常の画面操作と同じように行われ、メルカリの規約・プライバシーポリシーに従って扱われます。</p>
+      <p>新しい版の確認は、Chrome標準のChromeウェブストア更新の仕組みを使います。</p>
+    </section>
+    <section>
+      <h2>4. 保持・削除</h2>
+      <p>処理キューは、次の一括処理を開始すると新しい内容に置き換わります。拡張をアンインストールするか、Chromeプロファイルを削除すると、保存した情報もすべて削除されます。本拡張がメルカリ上で非表示にした商品は、各商品ページの「プロフィールに表示」で元に戻せます。</p>
+    </section>
+    <section>
+      <h2>5. 第三者提供とサイトのアクセス情報</h2>
+      <p>情報を第三者へ提供・販売したり、広告や追跡に利用したりしません。</p>
+      <p>この紹介サイトはGitHub Pagesで配信します。当方独自のアクセス解析は設置していませんが、ホスティング提供者がサービス提供・保護のためにIPアドレス等のアクセス情報を取り扱う場合があります。詳しくは<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHubのプライバシーステートメント</a>をご確認ください。</p>
+    </section>
+    <section>
+      <h2>6. 運営者・お問い合わせ</h2>
+      <p>運営者：横田裕市</p>
+      <p>本拡張の情報の取り扱いに関するご相談：<a href="mailto:main@yokoichi.jp">main@yokoichi.jp</a></p>
+    </section>
+  </main>
+  <footer class="site-footer"><span>© 2026 yokoichi</span><div class="footer-links"><a href="../">まとめて非表示 for メルカリ</a><a href="mailto:main@yokoichi.jp">お問い合わせ</a></div></footer>
+</body>
+</html>

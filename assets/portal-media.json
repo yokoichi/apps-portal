@@ -157,5 +157,27 @@
     "height": 96,
     "kind": "icon",
     "sha256": "aef12ffdcaff46fcb71aa46e69a30862755bc699ba0707040a184b2a9d2dffba"
+  },
+  {
+    "product": "matomete-hihyoji",
+    "path": "assets/portal-icons/matomete-hihyoji.png",
+    "source": "Original eye-with-slash geometric icon rendered by the extension project's icon script (96px).",
+    "owner_verified": true,
+    "verification": "Original geometric artwork drawn for this extension; no Mercari logo, brand color or third-party asset reused.",
+    "width": 96,
+    "height": 96,
+    "kind": "icon",
+    "sha256": "065d45cf509c2476630cfd029776b04161c3649cc5a753a5e64b64c26d243a3c"
+  },
+  {
+    "product": "matomete-hihyoji",
+    "path": "assets/portal-screens/matomete-hihyoji.jpg",
+    "source": "Browser screenshot of implemented extension UI (panel and confirm dialog) on a local fixture page displaying synthetic data; JPEG conversion of the Chrome Web Store submission screenshot.",
+    "owner_verified": true,
+    "verification": "Captured with all non-fixture requests blocked (0 recorded); dummy item names only; no image edits, personal information, Mercari logo or secrets.",
+    "width": 1280,
+    "height": 800,
+    "kind": "screenshot",
+    "sha256": "4c2c4110489a74303de887b61fbc00ab611dfb3aaed3699d40ba9196b0748a43"
   }
 ]

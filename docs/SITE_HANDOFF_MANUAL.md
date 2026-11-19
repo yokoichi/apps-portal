@@ -31,6 +31,8 @@ It currently hosts:
 - Yorishiro legal notice: `/yorishiro/legal-notice/`
 - Realtime Search Shortcut Chrome extension page: `/realtime-search-shortcut/`
 - Realtime Search Shortcut privacy policy: `/realtime-search-shortcut/privacy/`
+- Matomete Hihyoji for Mercari (unofficial) Chrome extension page: `/matomete-hihyoji/`
+- Matomete Hihyoji for Mercari privacy policy: `/matomete-hihyoji/privacy/`
 
 The original iOS app repository should stay private. Public website content belongs in this `apps-portal` repository.
 

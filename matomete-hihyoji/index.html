@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>まとめて非表示 for メルカリ — 売り切れ商品を、まとめてプロフィールから非表示に。</title>
+  <meta name="description" content="メルカリの非公式Chrome拡張。自分のプロフィールの売り切れ商品を、公式の「プロフィールから非表示」ボタンを代行して一括で非表示にします。株式会社メルカリとは無関係です。">
+  <link rel="canonical" href="https://apps.yokoichi.jp/matomete-hihyoji/">
+  <link rel="stylesheet" href="../assets/portal.css">
+</head>
+<body class="portal-marketing">
+  <a class="portal-skip" href="#main">本文へ</a>
+  <header class="portal-header portal-shell">
+    <a class="brand portal-brand" href="../">yokoichi / tools</a>
+    <nav class="portal-nav" aria-label="製品の関連ページ"><a href="./privacy/">プライバシー</a><a href="mailto:main@yokoichi.jp">お問い合わせ</a></nav>
+  </header>
+  <main class="portal-shell" id="main">
+    <section class="portal-product-view" aria-labelledby="page-title">
+      <div class="portal-product-intro">
+        <div class="portal-product-meta"><img class="portal-icon portal-icon--extension" src="../assets/portal-icons/matomete-hihyoji.png" alt="" width="96" height="96"><span>Chrome拡張・非公式</span></div>
+        <h1 id="page-title">まとめて非表示 for メルカリ</h1>
+        <p class="portal-description"><strong>メルカリの非公式ツールです。株式会社メルカリとは無関係で、提携・承認はありません。</strong></p>
+        <p class="portal-lead">売り切れ商品を、まとめてプロフィールから非表示に。</p>
+        <p class="portal-description">自分のプロフィールに並ぶ売り切れ商品を集め、確認のうえで、メルカリの商品ページにある「プロフィールから非表示」ボタンを1件ずつ代わりに押します。</p>
+      </div>
+      <figure class="portal-media portal-media--extension"><img class="portal-screen" src="../assets/portal-screens/matomete-hihyoji.jpg" alt="プロフィールの売り切れ商品7件を非表示にするかを確認するダイアログと、画面右下の操作パネル。" width="1280" height="800" fetchpriority="high"><figcaption>確認ダイアログの例（ダミーデータ）</figcaption></figure>
+      <div class="portal-actions"><a href="./privacy/">プライバシーポリシー</a></div>
+    </section>
+    <section class="portal-features" aria-labelledby="flow-title">
+      <h2 id="flow-title">集めて、確認して、1件ずつ。</h2>
+      <ul>
+        <li>自分のプロフィールで「売り切れを一括非表示」を押すと、一覧を自動でスクロールして売り切れ商品を集めます。</li>
+        <li>実行前に、件数と対象の商品名・商品IDを確認ダイアログで表示します。キャンセルすれば何も変更しません。</li>
+        <li>商品ページを1件ずつ開き、間隔（既定2〜3秒、最小2秒）をあけて処理します。進捗を表示し、「停止」でいつでも中断できます。</li>
+        <li>終了後に、成功・スキップ・失敗の件数と、失敗した商品のURL・理由を表示します。</li>
+        <li>商品ページでは、その1件だけを処理する「このページで実行」と、何も押さずに状態を表示する「診断」を使えます。</li>
+      </ul>
+    </section>
+    <section class="portal-features" aria-labelledby="safety-title">
+      <h2 id="safety-title">押す前に、確かめます。</h2>
+      <ul>
+        <li>自分のプロフィールであることを確認できない場合、一括処理は開始しません。</li>
+        <li>各商品ページでも売り切れ（取引完了）を確認できない商品は押しません。取引中の商品と、すでに非表示の商品はスキップします。</li>
+        <li>ログイン画面・認証画面・アクセス集中の表示を検知した場合や、3件連続で失敗した場合は全体を中止します。</li>
+      </ul>
+    </section>
+    <section class="portal-features" aria-labelledby="trust-title">
+      <h2 id="trust-title">ご利用の前に</h2>
+      <p>メルカリ上のデータが実際に変わります。非表示にした商品は、他のユーザーからも見えなくなります。元に戻すには、各商品ページで「プロフィールに表示」を押してください。一括で戻す機能はありません。</p>
+      <p>メルカリの公式製品ではありません。メルカリの画面仕様が変わると動かなくなる場合があります。少数件から試してください。</p>
+      <p>拡張は外部のサーバーと通信しません。設定と処理状況はこのブラウザの中だけに保存します。詳しくはプライバシーポリシーをご確認ください。</p>
+    </section>
+    <section class="portal-product-support" aria-labelledby="support-title">
+      <h2 id="support-title">サポートとプライバシー</h2>
+      <p>運営者：横田裕市</p>
+      <div class="portal-links"><a href="./privacy/">プライバシーポリシー</a><a href="mailto:main@yokoichi.jp">main@yokoichi.jp</a></div>
+    </section>
+  </main>
+  <footer class="portal-footer portal-shell"><span>© 2026 yokoichi</span><div class="portal-links"><a href="./privacy/">プライバシー</a><a href="mailto:main@yokoichi.jp">お問い合わせ</a></div></footer>
+</body>
+</html>
