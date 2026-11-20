@@ -209,7 +209,7 @@ class PortalJourneyTests(unittest.TestCase):
             with self.subTest(path=path):
                 self.assertEqual(hashlib.sha256((ROOT / path).read_bytes()).hexdigest(), sha)
 
-    def test_kokomemo_pages_pair_languages_and_wait_for_the_store(self):
+    def test_kokomemo_pages_pair_languages_and_link_the_store(self):
         for page in KOKOMEMO_PAGES:
             with self.subTest(page=page):
                 d = Document(ROOT / page)
@@ -217,7 +217,6 @@ class PortalJourneyTests(unittest.TestCase):
                 en = '/en/' in page
                 self.assertEqual(d.by_tag('html')[0].get('lang'), 'en' if en else 'ja')
                 self.assertEqual(d.by_tag('script'), [])
-                self.assertFalse(any('apps.apple.com' in a.get('href', '') for a in d.by_tag('a')))
                 switches = [a for a in d.by_tag('a') if 'locale-switch' in a.get('class', '').split()]
                 self.assertEqual(len(switches), 1)
                 counterpart = page.replace('kokomemo/en/', 'kokomemo/') if en else page.replace('kokomemo/', 'kokomemo/en/')
@@ -226,9 +225,13 @@ class PortalJourneyTests(unittest.TestCase):
                 alternates = {a.get('hreflang'): a.get('href') for a in d.by_tag('link') if a.get('rel') == 'alternate'}
                 self.assertEqual(set(alternates), {'ja', 'en', 'x-default'})
                 if '/privacy/' in page or '/support/' in page:
-                    self.assertIn('https://forms.gle/NJ1tqL46KGdKBHGN7', text)
-        for page, status in [('kokomemo/index.html', 'App Store申請準備中'), ('kokomemo/en/index.html', 'App Store submission in preparation')]:
-            self.assertIn(status, (ROOT / page).read_text())
+                    self.assertIn('https://forms.gle/goCZw6N4XcjatVv88', text)
+                    self.assertNotIn('https://forms.gle/NJ1tqL46KGdKBHGN7', text)
+        for page in ['kokomemo/index.html', 'kokomemo/en/index.html']:
+            stores = [a for a in Document(ROOT / page).by_tag('a') if 'store-link' in a.get('class', '').split()]
+            self.assertEqual(len(stores), 1)
+            self.assertTrue(stores[0]['href'].startswith('https://apps.apple.com/'))
+            self.assertIn('id6836916493', stores[0]['href'])
 
     def test_kokomemo_privacy_discloses_storage_location_and_apple_services(self):
         for page, phrases in [

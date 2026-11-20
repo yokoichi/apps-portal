@@ -69,6 +69,8 @@ main,
 .hero p, .lead { margin: 18px 0 0; max-width: 680px; color: var(--muted); font-size: 1.08rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
 .status-link { color: var(--accent); font-weight: 600; }
+.store-link { display: inline-block; padding: 12px 22px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 700; text-decoration: none; }
+.store-link:hover { background: var(--accent-strong); }
 
 .content-section { padding: 48px 0; }
 .link-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--card-gap); }
