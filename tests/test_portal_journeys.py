@@ -42,12 +42,12 @@ class Document(HTMLParser):
 
 
 class PortalJourneyTests(unittest.TestCase):
-    def test_root_offers_seven_named_single_detail_links(self):
+    def test_root_offers_eight_named_single_detail_links(self):
         d = Document(ROOT / 'index.html')
         rows = [a for a in d.by_tag('a') if 'portal-row' in a.get('class', '').split()]
         self.assertEqual([urlsplit(urljoin(ORIGIN + '/', a['href'])).path for a in rows],
-                         ['/yorishiro/', '/tozankinen/', '/ichikeshi/', '/kokomemo/', '/realtime-search-shortcut/', '/x-bookmark-exporter/', '/matomete-hihyoji/'])
-        for a, name in zip(rows, ['Yorishiro', '登山記念', '位置消し', 'kokomemo', 'リアルタイム検索', 'Xブックマークエクスポーター', 'まとめて非表示 for メルカリ']):
+                         ['/yorishiro/', '/tozankinen/', '/ichikeshi/', '/kokomemo/', '/realtime-search-shortcut/', '/x-bookmark-exporter/', '/matomete-hihyoji/', '/'])  # 最後は外部ツール https://video-fixer.pages.dev/
+        for a, name in zip(rows, ['Yorishiro', '登山記念', '位置消し', 'kokomemo', 'リアルタイム検索', 'Xブックマークエクスポーター', 'まとめて非表示 for メルカリ', 'Google Pixel to mac Video Fixer']):
             self.assertIn(name, a.get('aria-label', ''))
         self.assertEqual(d.nested_controls, [])
 
@@ -160,7 +160,8 @@ class PortalJourneyTests(unittest.TestCase):
         for filename in ['index.html', 'en/index.html']:
             d = Document(ROOT / filename)
             rows = [a for a in d.by_tag('a') if 'portal-row' in a.get('class', '').split()]
-            self.assertEqual(len(rows), 7)
+            self.assertEqual(len(rows), 8)
+            self.assertEqual(rows[7]['href'], 'https://video-fixer.pages.dev/')
             self.assertTrue(rows[5]['href'].endswith('x-bookmark-exporter/'))
             if filename.startswith('en/'):
                 self.assertEqual(rows[5]['hreflang'], 'ja')
